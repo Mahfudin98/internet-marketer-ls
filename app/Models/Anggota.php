@@ -24,4 +24,8 @@ class Anggota extends Authenticatable
         $this->attributes['slug'] = Str::slug($value);
     }
 
+    public function district()
+    {
+        return $this->belongsTo(District::class);
+    }
 }

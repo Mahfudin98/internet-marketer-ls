@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Anggota;
 
 use App\Http\Controllers\Controller;
+use App\Models\Anggota;
 use App\Models\Category;
+use App\Models\Province;
 use App\Models\Video;
 use Illuminate\Http\Request;
 
@@ -11,7 +13,11 @@ class IndexController extends Controller
 {
     public function index()
     {
-        return view('anggota.welcome');
+        $province = Province::with(['district.anggota'])->orderBy('created_at', 'desc')->get();
+        $agen = Anggota::with(['district'])->orderBy('created_at', 'desc');
+        $agen = $agen->where('type', 'Agen')->get();
+        // dd($province[0]->city[0]->district[0]->anggota);
+        return view('guest.listagenreseller', compact('province', 'agen'));
     }
 
     public function list()

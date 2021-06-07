@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Anggota\IndexController;
 use App\Http\Controllers\Anggota\LoginController;
 use App\Http\Controllers\UserController;
+use Facade\FlareClient\View;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +21,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [IndexController::class, 'index'])->name('member.index');
+// Route::get('/index', [IndexController::class, 'index'])->name('member.index');
+Route::get('/', [IndexController::class, 'index'])->name('guest.index');
 Route::get('/member/login', [LoginController::class, 'loginForm'])->name('login.form');
 Route::post('/post/member/login', [LoginController::class, 'login'])->name('login.post');
 Route::group(['middleware' => 'member'], function() {

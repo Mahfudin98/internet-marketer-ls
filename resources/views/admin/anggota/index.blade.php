@@ -31,7 +31,8 @@
                             <thead class="thead-dark">
                                 <th>#</th>
                                 <th>Nama</th>
-                                <th>Username</th>
+                                <th>Kecamatan</th>
+                                <th>Phone/Link CTA</th>
                                 <th>Alamat</th>
                                 <th>Type</th>
                                 <th>Status</th>
@@ -40,13 +41,27 @@
                             <tbody>
                                 @forelse ($anggota as $row)
                                 <tr>
-                                    <td><img src="{{ url('/storage/anggota/'.$row->image) }}" width="100px" height="auto" alt="{{ $row->image }}"></td>
                                     <td>
-                                        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
-                                            {{ $row->name }}
-                                        </button>
+                                        @if ($row->image != null)
+                                            <img src="{{ url('/storage/anggota/'.$row->image) }}" width="100px" height="auto" alt="{{ $row->image }}">
+                                        @else
+                                            <img src="{{ asset('img/logo-ls.png') }}" width="100px" height="auto" alt="{{ $row->image }}">
+                                        @endif
                                     </td>
-                                    <td>{{ $row->username }}</td>
+                                    <td>
+                                        {{ $row->name }}
+                                        {{-- <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
+                                            {{ $row->name }}
+                                        </button> --}}
+                                    </td>
+                                    <td>{{ $row->district->name }}</td>
+                                    <td>
+                                        @if ($row->link != null)
+                                            <a href="{{ $row->link }}">Cek Link disini!</a>
+                                        @else
+                                        {{ preg_replace("/^62/", "0", $row->phone) }}
+                                        @endif
+                                    </td>
                                     <td>{{ $row->alamat }}</td>
                                     <td>
                                         @if ($row->type == 'Agen')
@@ -91,7 +106,7 @@
 </main>
 
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  {{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -109,5 +124,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
 @stop

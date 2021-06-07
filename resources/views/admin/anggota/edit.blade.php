@@ -22,33 +22,13 @@
                                     <input type="text" class="form-control" name="name" value="{{ $anggota->name }}" id="name" placeholder="Nama Anggota" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="username">Username</label>
-                                    <input type="text" class="form-control" name="username" value="{{ $anggota->username }}" id="username" placeholder="Username Anggota" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <input type="password" class="form-control" name="password" id="password" placeholder="Biarkan Kosong jika tidak ingin mengganti password.">
-                                </div>
-                                <div class="form-group">
-                                    <label for="image">Foto Anggota</label>
-                                    <div class="input-group mb-3">
-                                        <div class="custom-file">
-                                          <input type="file" name="image" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                                          <label class="custom-file-label" for="inputGroupFile01" id="inputGroupFile01">Choose file</label>
-                                        </div>
-                                    </div>
-                                    <p>Biarkan kosong jika tidak ingin mengganti Foto.</p>
-                                    <img src="{{ url('/storage/anggota/'.$anggota->image) }}" width="100px" height="auto" alt="{{ $anggota->image }}">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
                                     <label for="phone">Nomor HP/Whataspp</label>
-                                    <input type="tel" class="form-control" name="phone" value="{{ $anggota->phone }}" id="phone" placeholder="Nomor HP Anggota" required>
+                                    <input type="tel" class="form-control" name="phone" value="{{ preg_replace("/^62/", "0", $anggota->phone) }}" id="phone" placeholder="Nomor HP Anggota" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="alamat">Alamat</label>
-                                    <input type="text" class="form-control" name="alamat" value="{{ $anggota->alamat }}" id="alamat" placeholder="Alamat Anggota" required>
+                                    <label for="link">Link CTA*</label>
+                                    <input type="text" class="form-control" name="link" value="{{ $anggota->link }}" id="link" placeholder="Link Rotator">
+                                    <p><small>*Masukan link CTA jika ada</small></p>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputGroupSelect01">Tipe Anggota</label>
@@ -71,6 +51,47 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="province_id">Provinsi</label>
+                                    <select class="form-control" name="province_id" id="province_id" data-width="fit" data-style="form-control form-control-lg" data-title="Pilih Provinsi">
+                                      <option value="">Pilih Propinsi</option>
+                                      @foreach ($provinces as $row)
+                                      <option value="{{ $row->id }}" {{ $anggota->district->province_id == $row->id ? 'selected':'' }}>{{ $row->name }}</option>
+                                      @endforeach
+                                    </select>
+                                    <p class="text-danger">{{ $errors->first('province_id') }}</p>
+                                  </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="city_id">Kabupaten</label>
+                                    <select class="form-control" name="city_id" id="city_id" data-width="fit" data-style="form-control form-control-lg" data-title="Pilih Kabupaten">
+                                        <option value="">Pilih Kabupaten/Kota</option>
+                                    </select>
+                                    <p class="text-danger">{{ $errors->first('city_id') }}</p>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="district_id">Kecamatan</label>
+                                    <select class="form-control" name="district_id" id="district_id" data-width="fit" data-style="form-control form-control-lg" data-title="Pilih Kecamatan">
+                                        <option value="">Pilih Kecamatan</option>
+                                    </select>
+                                    <p class="text-danger">{{ $errors->first('district_id') }}</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="alamat">Alamat</label>
+                                    <input type="text" class="form-control" name="alamat" value="{{ $anggota->alamat }}" id="alamat" placeholder="Alamat Anggota" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="image">Foto Anggota</label>
+                                    <div class="input-group mb-3">
+                                        <div class="custom-file">
+                                          <input type="file" name="image" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                          <label class="custom-file-label" for="inputGroupFile01" id="inputGroupFile01">Choose file</label>
+                                        </div>
+                                    </div>
+                                    <p>Biarkan kosong jika tidak ingin mengganti Foto.</p>
+                                    <img src="{{ url('/storage/anggota/'.$anggota->image) }}" width="100px" height="auto" alt="{{ $anggota->image }}">
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="card-footer">
@@ -90,3 +111,56 @@
     })
 </script>
 @stop
+
+@section('js')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        loadCity($('#province_id').val(), 'bySelect').then(() => {
+            loadDistrict($('#city_id').val(), 'bySelect');
+        })
+    })
+    $('#province_id').on('change', function() {
+        loadCity($(this).val(), '');
+    })
+    $('#city_id').on('change', function() {
+        loadDistrict($(this).val(), '')
+    })
+    function loadCity(province_id, type) {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                url: "{{ url('/api/city') }}",
+                type: "GET",
+                data: { province_id: province_id },
+                success: function(html){
+                    $('#city_id').empty()
+                    $('#city_id').append('<option value="">Pilih Kabupaten/Kota</option>')
+                    $.each(html.data, function(key, item) {
+                        let city_selected = {{ $anggota->district->city_id }};
+                        let selected = type == 'bySelect' && city_selected == item.id ? 'selected':'';
+                        $('#city_id').append('<option value="'+item.id+'" '+ selected +'>'+item.name+'</option>')
+                        resolve()
+                    })
+                }
+            });
+        })
+    }
+    function loadDistrict(city_id, type) {
+        $.ajax({
+            url: "{{ url('/api/district') }}",
+            type: "GET",
+            data: { city_id: city_id },
+            success: function(html){
+                $('#district_id').empty()
+                $('#district_id').append('<option value="">Pilih Kecamatan</option>')
+                $.each(html.data, function(key, item) {
+                    let district_selected = {{ $anggota->district->id }};
+                    let selected = type == 'bySelect' && district_selected == item.id ? 'selected':'';
+                    $('#district_id').append('<option value="'+item.id+'" '+ selected +'>'+item.name+'</option>')
+                })
+            }
+        });
+    }
+</script>
+@endsection

@@ -267,62 +267,62 @@
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-img"><img src="{{ asset('img/product/product_1.jpeg') }}" class="img-fluid" alt=""></div>
+            <div class="portfolio-img"><img src="{{ asset('img/product/paket_2.jpeg') }}" class="img-fluid" alt=""></div>
             <div class="portfolio-info">
-              <h4>RED JELLY CREAM </h4>
+              <h4>PAKET BRIGHTENING BASIC</h4>
               <p>BPOM</p>
-              <a href="{{ asset('img/product/product_1.jpeg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="(POM NA18201901341)"><i class="bx bx-plus"></i></a>
-              <a href="https://shopee.co.id/LS-SKINCARE-BPOM-RED-JELLY-GLOWING-CREAM-WAJAH-KOSMETIK-KECANTIKAN-I-LS-SKINCARE-(ELSTM)-i.161004486.2680324035" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+              <a href="{{ asset('img/product/paket_2.jpeg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="PAKET BRIGHTENING BASIC"><i class="bx bx-plus"></i></a>
+              <a href="https://shopee.co.id/LS-SKINCARE-BPOM-CREAM-PEMUTIH-WAJAH-BASIC-GLOWING-KOSMETIK-PERAWATAN-KECANTIKAN-BRIGHTENING-(ELSTM)-i.161004486.2855783292" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-img"><img src="{{ asset('img/product/product_2.jpeg') }}" class="img-fluid" alt=""></div>
+            <div class="portfolio-img"><img src="{{ asset('img/product/paket_1.jpeg') }}" class="img-fluid" alt=""></div>
             <div class="portfolio-info">
-              <h4>BRIGTHENING DAY CREAM</h4>
+              <h4>PAKET ACNE SERIES</h4>
               <p>BPOM</p>
-              <a href="{{ asset('img/product/product_2.jpeg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="(POM  NA18201522665)"><i class="bx bx-plus"></i></a>
-              <a href="https://shopee.co.id/LS-SKINCARE-BPOM-BRIGTHENING-DAY-GLOWING-CREAM-WAJAH-KOSMETIK-KECANTIKAN-I-LS-SKINCARE-(ELSTM)-i.161004486.2465908009" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+              <a href="{{ asset('img/product/paket_1.jpeg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="PAKET ACNE SERIES"><i class="bx bx-plus"></i></a>
+              <a href="https://shopee.co.id/LS-SKINCARE-BPOM-CREAM-BERJERAWAT-KOSMETIK-PERAWATAN-KECANTIKAN-(ELSTM)-i.161004486.7615328216" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-img"><img src="{{ asset('img/product/product_3.jpeg') }}" class="img-fluid" alt=""></div>
+            <div class="portfolio-img"><img src="{{ asset('img/product/paket_3.jpeg') }}" class="img-fluid" alt=""></div>
             <div class="portfolio-info">
-              <h4>BRIGTENING TONER AHA</h4>
+              <h4>PAKET HEMAT BRIGHTENING SERIES</h4>
               <p>BPOM</p>
-              <a href="{{ asset('img/product/product_3.jpeg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="(POM NA18201204320)"><i class="bx bx-plus"></i></a>
-              <a href="https://shopee.co.id/LS-SKINCARE-BPOM-BRIGTENING-TONER-AHA-GLOWING-CREAM-WAJAH-KOSMETIK-KECANTIKAN-I-LS-SKINCARE-(ELSTM-i.161004486.2465813519" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+              <a href="{{ asset('img/product/paket_3.jpeg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="PAKET HEMAT BRIGHTENING SERIES"><i class="bx bx-plus"></i></a>
+              <a href="https://shopee.co.id/LSSKINCARE-BPOM-CREAMPEMUTIH-WAJAH-BASIC-SERIES-3in-KOSMETIK-PERAWATAN-KECANTIKAN-BRIGHTENING(ELSTM)-i.161004486.6600025568" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-img"><img src="{{ asset('img/product/product_4.jpeg') }}" class="img-fluid" alt=""></div>
+            <div class="portfolio-img"><img src="{{ asset('img/product/paket_5.jpeg') }}" class="img-fluid" alt=""></div>
             <div class="portfolio-info">
-              <h4>SERUM VIT C</h4>
+              <h4>PAKET ULTIMATE WITH FLEKSOL</h4>
               <p>BPOM</p>
-              <a href="{{ asset('img/product/product_4.jpeg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="(POM NA18201901338)"><i class="bx bx-plus"></i></a>
-              <a href="https://shopee.co.id/LS-SKINCARE-BPOM-SERUM-VIT-C-GLOWING-CREAM-WAJAH-KOSMETIK-PERAWATAN-KECANTIKAN-I-LS-SKINCARE-(ELSTM)-i.161004486.2653044065" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+              <a href="{{ asset('img/product/paket_5.jpeg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="PAKET ULTIMATE WITH FLEKSOL"><i class="bx bx-plus"></i></a>
+              <a href="https://shopee.co.id/LS-SKINCARE-BPOM-CREAM-PEMUTIH-WAJAH-ULTIMATE-KOSMETIK-PERAWATAN-KECANTIKAN-BRIGHTENING-(ELSTM)-i.161004486.2465728396" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-img"><img src="{{ asset('img/product/product_5.jpeg') }}" class="img-fluid" alt=""></div>
+            <div class="portfolio-img"><img src="{{ asset('img/product/paket_6.jpeg') }}" class="img-fluid" alt=""></div>
             <div class="portfolio-info">
-              <h4>FACIAL WASH AHA</h4>
+              <h4>PAKET BEAUTY BODY</h4>
               <p>BPOM</p>
-              <a href="{{ asset('img/product/product_5.jpeg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="(POM NA18201204319)"><i class="bx bx-plus"></i></a>
-              <a href="https://shopee.co.id/LS-SKINCARE-BPOM-FACIAL-WASH-AHA-GLOWING-CREAM-WAJAH-KOSMETIK-KECANTIKAN-I-LS-SKINCARE-(ELSTM)-i.161004486.2465934614" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+              <a href="{{ asset('img/product/paket_6.jpeg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="PAKET BEAUTY BODY"><i class="bx bx-plus"></i></a>
+              <a href="https://shopee.co.id/LS-SKINCARE-BPOM-BEAUTY-BODY-GLOWING-CREAM-WAJAH-KOSMETIK-KECANTIKAN-I-LS-SKINCARE-(ELSTM)-i.161004486.3200091672" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-img"><img src="{{ asset('img/product/product_6.jpeg') }}" class="img-fluid" alt=""></div>
+            <div class="portfolio-img"><img src="{{ asset('img/product/paket_4.jpeg') }}" class="img-fluid" alt=""></div>
             <div class="portfolio-info">
-              <h4>BRIGTHENING NIGHT CREAM</h4>
+              <h4>PAKET KOMPLIT BRIGHTENING SERIES</h4>
               <p>BPOM</p>
-              <a href="{{ asset('img/product/product_6.jpeg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="(POM NA18200105977)"><i class="bx bx-plus"></i></a>
-              <a href="https://shopee.co.id/LS-SKINCARE-BPOM-BRIGTHENING-NIGHT-GLOWING-CREAM-WAJAH-KOSMETIK-KECANTIKAN-I-LS-SKINCARE-(ELSTM)-i.161004486.2465853486" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+              <a href="{{ asset('img/product/paket_4.jpeg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="PAKET KOMPLIT BRIGHTENING SERIES"><i class="bx bx-plus"></i></a>
+              <a href="https://shopee.co.id/LS-SKINCARE-BPOM-CREAM-PEMUTIH-WAJAH-BRIGHTENING-GLOWING-KOSMETIK-PERAWATAN-KECANTIKAN-(ELSTM)-i.161004486.5605193028" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>
         {{--
@@ -455,8 +455,20 @@
         <div class="section-title">
           <h2>Join Agen & Reseller</h2>
           <p>
-            Takut Gak Laku? Gak Bisa Jualan? itu yang kita cari, Karna kamu bakal di ajarin dari zero to hero di dalam Group “Belajar Bareng Bos Imers” miliknya secara Online.
+            <strong>Tertarik Jadi Agen Atau Reseller LS Skincare? Tapi Takut Gak Laku? Dan Gak Bisa Jualan?</strong> itu yang kita cari, Karna kamu bakal di ajarin dari zero to hero di dalam Group “Belajar Bareng Bos Imers” miliknya secara Online.
           </p>
+          <h3>
+              Kenapa harus join sekarang?
+          </h3>
+          <p>
+            <strong>Karna KHUSUS Bulan ini</strong> Harga Promo jadi 15 juta rupiah dari <s>25 juta</s> Hemat 10 juta.
+          </p>
+          <h2>
+              Gimana sih cara join Agen dan Reseller LS Skincare?
+          </h2>
+          <h3>
+              Mudah kok tinggal <strong>KLIK TOMBOL JOIN SEKARANG</strong> yang ada dibawah.
+          </h3>
         </div>
 
         <div class="row">
@@ -478,7 +490,7 @@
                 <li class="na"><i class="bx bx-x"></i> <span>Massa ultricies mi quis hendrerit</span></li> --}}
               </ul>
               <div class="text-center">
-                <a href="#" class="buy-btn">Mulai Sekarang</a>
+                <a href="#" class="buy-btn">Join Sekarang</a>
               </div>
             </div>
           </div>
@@ -487,7 +499,7 @@
             <div class="box featured">
               <div class="text-center">
                 <h3>Join Agen</h3>
-                <h4><sup>Rp</sup>15<sub>jt</sub></h4>
+                <h4><s><sup>Rp</sup>25<sub>jt</sub></s>|<sup>Rp</sup>15<sub>jt</sub></h4>
               </div>
               <ul>
                 <li><i class="bx bx-check"></i> Keuntungan produk sampai dengan 60rb/produk</li>
@@ -502,7 +514,7 @@
                 <li><i class="bx bx-check"></i> Mendapat bimbingan langsung dari Owner LS-Skincare</li>
               </ul>
               <div class="text-center">
-                <a href="#" class="buy-btn">Mulai Sekarang</a>
+                <a href="#" class="buy-btn">Join Sekarang</a>
               </div>
             </div>
           </div>
@@ -516,12 +528,13 @@
     <!-- ======= Frequently Asked Questions Section ======= -->
     <section id="faq" class="faq section-bg">
       <div class="container" data-aos="fade-up">
-
+        {{--
         <div class="section-title">
           <h2>Frequently Asked Questions</h2>
           <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
         </div>
-
+        --}}
+        {{--
         <div class="faq-list">
           <ul>
             <li data-aos="fade-up" data-aos-delay="100">
@@ -571,7 +584,7 @@
 
           </ul>
         </div>
-
+         --}}
       </div>
     </section><!-- End Frequently Asked Questions Section -->
 
@@ -586,12 +599,12 @@
 
         <div class="row">
 
-          <div class="col-lg-5 d-flex align-items-stretch">
+          <div class="col-lg-12 d-flex align-items-stretch">
             <div class="info">
               <div class="address">
                 <i class="bi bi-geo-alt"></i>
                 <h4>Location:</h4>
-                <p>A108 Adam Street, New York, NY 535022</p>
+                <p>Jl. Desa Tenjolayar No.23, Tenjolayar, Kec. Cigasong, Kabupaten Majalengka, Jawa Barat 45476</p>
               </div>
 
               <div class="email">
@@ -606,12 +619,12 @@
                 <p>+1 5589 55488 55s</p>
               </div>
 
-              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.488172121253!2d108.26617601434657!3d-6.831920568727568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6f253ca23391e7%3A0xd7ef8cccab622fe0!2sLS%20SKINCARE%20OFFICIAL%20STORE!5e0!3m2!1sid!2sid!4v1618979965498!5m2!1sid!2sid" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
             </div>
 
           </div>
 
-          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+          {{-- <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
             <form action="forms/contact.php" method="post" role="form" class="php-email-form">
               <div class="row">
                 <div class="form-group col-md-6">
@@ -638,7 +651,7 @@
               </div>
               <div class="text-center"><button type="submit">Send Message</button></div>
             </form>
-          </div>
+          </div> --}}
 
         </div>
 

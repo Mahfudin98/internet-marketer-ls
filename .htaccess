@@ -1,0 +1,7 @@
+Options -Indexes
+&lt;IfModule mod_rewrite.c&gt;
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+    RewriteRule ^(.*)$ public/$1 [L]
+&lt;/IfModule&gt;

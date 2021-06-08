@@ -98,7 +98,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-
+                    {{ $anggota->links('pagination::bootstrap-4') }}
                 </div>
             </div>
         </div>

@@ -14,21 +14,23 @@ class AnggotaSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('anggota')->insert(
+        DB::table('anggotas')->insert(
             [
                 'name' => 'Hanifa', //Giari
                 'slug' => 'hanifa',
                 'district_id' => 5229,
                 'alamat' => 'Kec. Purwakarta - kab. Purwakarta - Jawa Barat',
-                'phone' => 'https://orderan.lsstore.id/cs/agen-hanifa',
+                'phone' => '081234567890',
+                'link' => 'https://orderan.lsstore.id/cs/agen-hanifa',
                 'type' => 'Agen'
             ],
             [
-                'name' => 'Reni', //Agus
+                'name' => 'Reni Nur Fitriani', //Agus
                 'slug' => 'reni',
                 'district_id' => 1064,
                 'alamat' => 'Bogor Tegah Kota - Bogor - Jawa Barat',
-                'phone' => '',
+                'phone' => '081234567890',
+                'link'  => 'https://orderan.lsstore.id/cs/agen-reni',
                 'type' => 'Agen'
             ],
             [
@@ -36,7 +38,8 @@ class AnggotaSeeder extends Seeder
                 'slug' => 'muji',
                 'district_id' => 2388,
                 'alamat' => 'Karawang Barat - Karawang - Jawa Barat',
-                'phone' => '',
+                'phone' => '081234567890',
+                'link' => 'https://orderan.lsstore.id/cs/agen-muji',
                 'type' => 'Agen'
             ],
             [
@@ -44,7 +47,8 @@ class AnggotaSeeder extends Seeder
                 'slug' => 'vellin-gladies',
                 'district_id' => 2388,
                 'alamat' => 'Rembang - Purbalingga - Jawa Tengah',
-                'phone' => '',
+                'phone' => '081234567890',
+                'link' => 'https://mauorder.online/ls-agen',
                 'type' => 'Agen'
             ]
         );

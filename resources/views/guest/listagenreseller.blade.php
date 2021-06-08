@@ -90,26 +90,26 @@
                                     </div>
                                     <hr>
                                     @forelse ($rows->district as $item)
-                                        @foreach ($item->anggota->where('type', 'Reseller') as $row)
                                             <h3>List Reseller Provinsi {{ $rows->name }}</h3>
-                                            <ul class="list-group">
-                                                <li href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-                                                <div class="d-flex w-100 justify-content-between">
-                                                    <h5 class="mb-1"> <strong>{{ $row->name }}</strong></h5>
-                                                    <small>{{ $item->name }}</small>
-                                                </div>
-                                                <p class="mb-1">{{ $row->alamat }}</p>
-                                                    <small>
-                                                        <a href="#"><button class="btn btn-primary btn-sm">Order Disini!</button></a>
-                                                    </small>
-                                                </li>
-                                            </ul>
-                                        @endforeach
-                                    @empty
-                                        <div class="col-md-12">
-                                            <h3 class="text-center">Tidak ada data</h3>
-                                        </div>
-                                    @endforelse
+                                            @foreach ($item->anggota->where('type', 'Reseller') as $row)
+                                                <ul class="list-group">
+                                                    <li href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+                                                    <div class="d-flex w-100 justify-content-between">
+                                                        <h5 class="mb-1"> <strong>{{ $row->name }}</strong></h5>
+                                                        <small>{{ $item->name }}</small>
+                                                    </div>
+                                                    <p class="mb-1">{{ $row->alamat }}</p>
+                                                        <small>
+                                                            <a href="#"><button class="btn btn-primary btn-sm">Order Disini!</button></a>
+                                                        </small>
+                                                    </li>
+                                                </ul>
+                                            @endforeach
+                                        @empty
+                                            <div class="col-md-12">
+                                                <h3 class="text-center">Tidak ada data</h3>
+                                            </div>
+                                        @endforelse
                                 </div>
                             </div>
                         </div>

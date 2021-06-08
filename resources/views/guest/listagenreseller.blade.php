@@ -37,11 +37,14 @@
                                 </h5>
                             </div>
                             <div id="{{ $rows->id }}" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                <div class="card-header">
+                                    <h3 class="text-center">List Agen Provinsi {{ $rows->name }}</h3>
+                                </div>
                                 <div class="card-body">
                                     <div class="row">
                                         @forelse ($rows->district as $item)
                                             @foreach ($item->anggota->chunk(3) as $agen)
-                                                @forelse ($agen->where('type', 'Agen') as $row)
+                                                @foreach ($agen->where('type', 'Agen') as $row)
                                                     <div class="col-xs-12 col-sm-6 col-md-4">
                                                         <div class="image-flip" >
                                                             <div class="mainflip flip-0">
@@ -80,11 +83,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                @empty
-                                                    <div class="col-md-12">
-                                                        <h3 class="text-center">Tidak ada data</h3>
-                                                    </div>
-                                                @endforelse
+                                                @endforeach
                                             @endforeach
                                         @empty
                                             <div class="col-md-12">
@@ -93,7 +92,7 @@
                                         @endforelse
                                     </div>
                                     <hr>
-                                    <h3>List Reseller Provinsi {{ $rows->name }}</h3>
+                                    <h3 class="text-center">List Reseller Provinsi {{ $rows->name }}</h3>
                                     @forelse ($rows->district as $item)
                                         @foreach ($item->anggota->where('type', 'Reseller') as $row)
                                             <ul class="list-group">

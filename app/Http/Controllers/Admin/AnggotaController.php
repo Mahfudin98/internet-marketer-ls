@@ -120,6 +120,10 @@ class AnggotaController extends Controller
             $data['image'] = $filename;
         }
 
+        if ($request->phone != '') {
+            $data['phone'] = preg_replace("/^0/", "62", $request->phone);
+        }
+
         if ($request->district_id != '') {
             $data['district_id'] = $request->district_id;
         }

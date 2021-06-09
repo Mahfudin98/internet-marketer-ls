@@ -142,11 +142,3 @@ section .section-title {
 	margin-top: -20px;
 	font-size: 15px;
 }
-
-/* footer */
-footer {
-    text-align: center;
-    padding: 3px;
-    background-color: #f27272;
-    color: white;
-  }

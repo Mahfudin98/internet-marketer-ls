@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Agen - Reseller | LS SKINCARE</title>
     <link href="{{ asset('img/logo-ls.png') }}" rel="icon">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -426,7 +426,9 @@
         </div>
     </section>
     <!-- Team -->
-
+    <footer>
+        <p>Copyright &copy; <script>document.write(new Date().getFullYear())</script> LS SKINCARE | Developed By <a href="https://www.instagram.com/mahfudin_nawawi/" target="_blank" rel="noopener noreferrer" style="color: #000">Mahfudin Nawawi.</a></p>
+    </footer>
     <script>
         $(document).on('click', '.panel-heading span.clickable', function(e){
             var $this = $(this);

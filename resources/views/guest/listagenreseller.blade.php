@@ -103,7 +103,9 @@
                                                     </div>
                                                     <p class="mb-1">{{ $row->alamat }}</p>
                                                     <small>
-                                                        <a href="#"><button class="btn btn-primary btn-sm">Order Disini!</button></a>
+                                                        <a href="https://wa.me/{{ $row->phone }}?text=Hallo+kak+.+.+.+Aku+mau+tampil+cantik+dan+glowing+dong+kak.+Mohon+dibantu+ya+kak+%F0%9F%A5%B0%F0%9F%A5%B0">
+                                                            <button class="btn btn-primary btn-sm">Order Disini!</button>
+                                                        </a>
                                                     </small>
                                                 </li>
                                             </ul>

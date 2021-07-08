@@ -28,4 +28,9 @@ class Anggota extends Authenticatable
     {
         return $this->belongsTo(District::class);
     }
+
+    public function member()
+    {
+        return $this->hasMany(MemberProduct::class);
+    }
 }

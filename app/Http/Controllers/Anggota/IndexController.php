@@ -5,13 +5,16 @@ namespace App\Http\Controllers\Anggota;
 use App\Http\Controllers\Controller;
 use App\Models\Anggota;
 use App\Models\Category;
+use App\Models\MemberProduct;
+use App\Models\Product;
 use App\Models\Province;
 use App\Models\Video;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
 {
-    public function index()
+    public function agenreseller()
     {
         $province = Province::with(['district.anggota'])->orderBy('created_at', 'desc')->get();
         $agen = Anggota::with(['district'])->orderBy('created_at', 'desc');
@@ -20,15 +23,20 @@ class IndexController extends Controller
         return view('guest.listagenreseller', compact('province', 'agen'));
     }
 
-    public function list()
+    public function index()
     {
-        $video = Video::with(['category'])->where('status', 1)->orderBy('created_at', 'DESC');
-        if (request()->q != '') {
-            $video = $video->where('title', 'LIKE', '%' . request()->q . '%');
-        }
-        $video = $video->paginate(10);
-        $kategori = Category::all();
+        return view('anggota.dashboard');
+    }
 
-        return view('anggota.dashboard', compact('video', 'kategori'));
+    public function product()
+    {
+        $product = Product::orderBy('DESC')->paginate(10);
+        $member = MemberProduct::with('product')->orderBy('DESC')->paginate(10);
+        return view('anggota.produk.produk', compact('product', 'member'));
+    }
+
+    public function stock()
+    {
+        return view('anggota.produk.stock');
     }
 }

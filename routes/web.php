@@ -23,21 +23,17 @@ use Illuminate\Support\Facades\Route;
 
 // Route::get('/index', [IndexController::class, 'index'])->name('member.index');
 Route::get('/', [LoginController::class, 'loginForm'])->name('login.form');
-Route::get('/list-agen-reseller', [IndexController::class, 'index'])->name('guest.index');
+Route::get('/list-agen-reseller', [IndexController::class, 'agenreseller'])->name('guest.index');
 Route::post('/post/member/login', [LoginController::class, 'login'])->name('login.post');
 Route::group(['middleware' => 'member'], function() {
+    Route::get('/dashboard', [IndexController::class, 'index'])->name('member.index');
+    Route::get('logout', [LoginController::class, 'logout'])->name('member.logout');
+
     Route::get('/user', function () {
         return view('anggota.user-setting.user');
     })->name('member.setting');
-    Route::get('/stock', function () {
-        return view('anggota.produk.stock');
-    })->name('member.stok');
-    Route::get('/produk', function () {
-        return view('anggota.produk.produk');
-    })->name('member.produk');
-    Route::get('member/dashboard', [IndexController::class, 'index'])->name('member.index');
-    Route::get('/dashboard', [IndexController::class, 'list'])->name('member.index');
-    Route::get('logout', [LoginController::class, 'logout'])->name('member.logout'); //TAMBAHKAN BARIS INI
+    Route::get('/stock', [IndexController::class, 'stock'])->name('member.stok');
+    Route::get('/produk', [IndexController::class, 'product'])->name('member.produk');
 });
 Route::group(['middleware' => ['auth']], function (){
     Route::prefix('admin')->group(function () {

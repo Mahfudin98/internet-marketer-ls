@@ -9,7 +9,7 @@ class LoginController extends Controller
 {
     public function loginForm()
     {
-        if (auth()->guard('member')->check()) return redirect(route('member.video'));
+        if (auth()->guard('member')->check()) return redirect(route('member.index'));
         return view('anggota.login');
     }
 
@@ -28,7 +28,7 @@ class LoginController extends Controller
         $login['status'] = 1;
 
         if (auth()->guard('member')->attempt($login)) {
-            return redirect()->route('member.video');
+            return redirect()->route('member.index');
         }
         return redirect()->back()->with(['error' => 'username/Password Salah']);
     }

@@ -29,6 +29,6 @@ class IndexController extends Controller
         $video = $video->paginate(10);
         $kategori = Category::all();
 
-        return view('anggota.list', compact('video', 'kategori'));
+        return view('anggota.dashboard', compact('video', 'kategori'));
     }
 }

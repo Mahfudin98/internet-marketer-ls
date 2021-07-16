@@ -61,34 +61,52 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-7 col-md-12 equel-grid">
-          <div class="grid widget-revenue-card">
-            <div class="grid-body d-flex flex-column h-100">
-              <div class="split-header">
-                <p class="card-title">Server Load</p>
-                <div class="content-wrapper v-centered">
-                  <small class="text-muted">2h ago</small>
-                  <span class="btn action-btn btn-refresh btn-xs component-flat">
-                    <i class="mdi mdi-autorenew text-muted mdi-2x"></i>
-                  </span>
+        <div class="col-md-7 equel-grid">
+            <div class="grid">
+                <div class="grid-body py-3">
+                    <p class="card-title ml-n1">Daftar Produk {{ ucfirst(auth()->guard('member')->user()->name) }}</p>
                 </div>
-              </div>
-              <div class="mt-auto">
-                <canvas id="cpu-performance" height="80"></canvas>
-                <h3 class="font-weight-medium mt-4">69.05%</h3>
-                <p class="text-gray">Storage is getting full</p>
-                <div class="w-50">
-                  <div class="d-flex justify-content-between text-muted mt-3">
-                    <small>Usage</small> <small>35.62 GB / 2TB</small>
-                  </div>
-                  <div class="progress progress-slim mt-2">
-                    <div class="progress-bar bg-primary" role="progressbar" style="width: 68%" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100">
-                    </div>
-                  </div>
+                <div class="table-responsive">
+                    <table class="table table-hover table-sm">
+                        <thead>
+                            <tr class="solid-header">
+                                <th class="pl-4">Gambar</th>
+                                <th>Nama Produk</th>
+                                <th>Type</th>
+                                <th>Stok</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse ($memberprod as $row)
+                                <tr>
+                                    <td class="pr-0 pl-4">
+                                        <img class="profile-img img-sm"
+                                            src="{{ url('/storage/product/' . $row->product->image) }}"
+                                            alt="profile image">
+                                    </td>
+                                    <td>
+                                        <small>{{ $row->product->name }}</small>
+                                    </td>
+                                    <td>
+                                        @if ($row->product->type == 0)
+                                            <span class="badge badge-success">Paket</span>
+                                        @else
+                                            <span class="badge badge-primary">Ecer</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <strong>{{ $row->stok }}</strong>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="4" class="text-center">Data Masih Kosong</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
       </div>
     </div>

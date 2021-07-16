@@ -104,12 +104,6 @@
                                                 @else
                                                     <span class="badge badge-primary">Ecer</span>
                                                 @endif
-                                                <div class="grouped-images mt-2">
-                                                    <img class="img-sm"
-                                                        src="{{ url('/storage/product/' . $row->product->image) }}"
-                                                        alt="{{ $row->product->name }}" data-toggle="tooltip"
-                                                        title="{{ $row->product->name }}">
-                                                </div>
                                             </div>
                                             <small class="log-time">Stok : {{ $row->stok }}</small>
                                         </div>

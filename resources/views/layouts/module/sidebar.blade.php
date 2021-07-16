@@ -4,7 +4,7 @@
         <img class="profile-img img-lg rounded-circle" src="{{ asset('admin/src/assets/images/profile/male/image_1.png') }}" alt="profile image">
       </div>
       <div class="info-wrapper">
-        <p class="user-name">{{ auth()->guard('member')->user()->name }}</p>
+        <p class="user-name">{{ ucfirst(auth()->guard('member')->user()->name) }}</p>
         <h6 class="display-income">{{ auth()->guard('member')->user()->type }}</h6>
       </div>
     </div>

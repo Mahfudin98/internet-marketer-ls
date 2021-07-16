@@ -26,7 +26,15 @@ class IndexController extends Controller
 
     public function index()
     {
-        return view('anggota.dashboard');
+        $member = Auth::guard('member')->user();
+        $memberprod = MemberProduct::where('anggota_id', $member->id)->with('product')->orderBy('created_at','DESC')->get();
+        $data = [];
+        foreach ($memberprod as $row) {
+            $data['label'][] = $row->product->name;
+            $data['stok'][] = $row->stok;
+        }
+        $data['chart_data'] = json_encode($data);
+        return view('anggota.dashboard', $data, compact('memberprod'));
     }
 
     public function product()

@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Anggota\IndexController;
 use App\Http\Controllers\Anggota\LoginController;
+use App\Http\Controllers\Anggota\SettingAnggotaController;
 use App\Http\Controllers\UserController;
 use Facade\FlareClient\View;
 use Illuminate\Support\Facades\Route;
@@ -30,9 +31,7 @@ Route::group(['middleware' => 'member'], function() {
     Route::get('/dashboard', [IndexController::class, 'index'])->name('member.index');
     Route::get('logout', [LoginController::class, 'logout'])->name('member.logout');
 
-    Route::get('/user', function () {
-        return view('anggota.user-setting.user');
-    })->name('member.setting');
+    Route::get('/user', [SettingAnggotaController::class, 'index'])->name('member.setting');
     Route::get('/stock', [IndexController::class, 'stock'])->name('member.stok');
     Route::get('/produk', [IndexController::class, 'product'])->name('member.produk');
     Route::post('/produk', [IndexController::class, 'productStore'])->name('member.product.store');

@@ -27,11 +27,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [LoginController::class, 'loginForm'])->name('login.form');
 Route::get('/list-agen-reseller', [IndexController::class, 'agenreseller'])->name('guest.index');
 Route::post('/post/member/login', [LoginController::class, 'login'])->name('login.post');
+Route::get('/member/{slug}', [SettingAnggotaController::class, 'member'])->name('member.profile');
 Route::group(['middleware' => 'member'], function() {
     Route::get('/dashboard', [IndexController::class, 'index'])->name('member.index');
     Route::get('logout', [LoginController::class, 'logout'])->name('member.logout');
 
     Route::get('/user', [SettingAnggotaController::class, 'index'])->name('member.setting');
+    Route::get('/user/edit', [SettingAnggotaController::class, 'edit'])->name('member.setting.edit');
+    Route::post('/user/update/{id}', [SettingAnggotaController::class, 'update'])->name('member.setting.update');
     Route::get('/stock', [IndexController::class, 'stock'])->name('member.stok');
     Route::get('/produk', [IndexController::class, 'product'])->name('member.produk');
     Route::post('/produk', [IndexController::class, 'productStore'])->name('member.product.store');

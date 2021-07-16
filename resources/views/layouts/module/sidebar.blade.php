@@ -1,7 +1,11 @@
 <div class="sidebar">
     <div class="user-profile">
       <div class="display-avatar animated-avatar">
-        <img class="profile-img img-lg rounded-circle" src="{{ asset('admin/src/assets/images/profile/male/image_1.png') }}" alt="profile image">
+        @if (auth()->guard('member')->user()->type != null)
+        <img class="profile-img img-lg rounded-circle" src="{{ url('/storage/anggota/'.auth()->guard('member')->user()->image) }}" alt="profile image">
+        @else
+        <img class="profile-img img-lg rounded-circle" src="{{ asset('img/logo-ls.png') }}" alt="profile image">
+        @endif
       </div>
       <div class="info-wrapper">
         <p class="user-name">{{ ucfirst(auth()->guard('member')->user()->name) }}</p>
@@ -30,7 +34,7 @@
           </li>
         </ul>
       </li>
-      <li class="{{ (request()->is('user')) ? 'active' : '' }}">
+      <li class="{{ (request()->is('user/*')) ? 'active' : '' }}">
         <a href="{{ route('member.setting') }}">
           <span class="link-title">User Setting</span>
           <i class="mdi mdi-account-settings link-icon"></i>

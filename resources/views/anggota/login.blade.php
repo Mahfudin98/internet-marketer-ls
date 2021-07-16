@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Label - Premium Responsive Bootstrap 4 Admin & Dashboard Template</title>
+    <title>Login Form - LS SKINCARE</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ asset('admin/src/assets/vendors/iconfonts/mdi/css/materialdesignicons.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin/src/assets/vendors/css/vendor.addons.css') }}" />
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{ asset('admin/src/assets/css/shared/style.css') }}" />
     <!-- endinject -->
     <!-- Layout style -->
-    <link rel="stylesheet" href="{{ asset('admin/src/assets/css/demo_1/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/src/assets/css/demo_2/style.css') }}">
     <!-- Layout style -->
     <link rel="shortcut icon" href="{{ asset('admin/src/assets/images/favicon.ico') }}" />
   </head>
@@ -64,10 +64,6 @@
                     </div>
                     <button type="submit" class="btn btn-primary btn-block"> Login </button>
                   </form>
-                  <div class="signup-link">
-                    <p>Don't have an account yet?</p>
-                    <a href="#">Sign Up</a>
-                  </div>
                 </div>
               </div>
             </div>
@@ -75,7 +71,7 @@
         </div>
       </div>
       <div class="auth_footer">
-        <p class="text-muted text-center">© Label Inc 2019</p>
+        <p class="text-muted text-center">Copyright © {{ now()->year }} <a href="https://lsskincarepusat.id" target="_blank">LS SKINCARE</a></p>
       </div>
     </div>
     <!--page body ends -->

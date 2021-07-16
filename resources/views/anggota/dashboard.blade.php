@@ -47,7 +47,7 @@
                                             </td>
                                             <td>
                                                 @if ($row->product->type == 0)
-                                                    <span class="badge badge-success">Paket</span>
+                                                    <span class="badge badge-warning">Paket</span>
                                                 @else
                                                     <span class="badge badge-primary">Ecer</span>
                                                 @endif

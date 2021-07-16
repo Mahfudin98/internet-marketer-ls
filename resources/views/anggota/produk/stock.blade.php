@@ -14,6 +14,11 @@
             <div class="row">
                 <div class="col-12 py-5">
                     <h4>Stok</h4>
+                    @if (session('success'))
+                        <div class="alert alert-success">{{ session('success') }}</div>
+                    @elseif (session('error'))
+                        <div class="alert alert-danger">{{ session('error') }}</div>
+                    @endif
                 </div>
             </div>
             <div class="row">
@@ -47,7 +52,7 @@
                                                 </td>
                                                 <td>
                                                     @if ($row->product->type == 0)
-                                                        <span class="badge badge-success">Paket</span>
+                                                        <span class="badge badge-warning">Paket</span>
                                                     @else
                                                         <span class="badge badge-primary">Ecer</span>
                                                     @endif
@@ -95,7 +100,7 @@
                                             <p class="log-name">{{ $row->product->name }}</p>
                                             <div class="log-details">
                                                 @if ($row->type == 0)
-                                                    <span class="badge badge-success">Paket</span>
+                                                    <span class="badge badge-warning">Paket</span>
                                                 @else
                                                     <span class="badge badge-primary">Ecer</span>
                                                 @endif

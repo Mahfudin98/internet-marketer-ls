@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{ asset('admin/src/assets/css/shared/style.css') }}">
     <!-- endinject -->
     <!-- Layout style -->
-    <link rel="stylesheet" href="{{ asset('admin/src/assets/css/demo_1/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/src/assets/css/demo_2/style.css') }}">
     <!-- Layout style -->
     <link rel="shortcut icon" href="{{ asset('admin/src/asssets/images/favicon.ico') }}" />
     @yield('css')

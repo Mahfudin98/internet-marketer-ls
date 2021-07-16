@@ -11,6 +11,7 @@ use App\Models\Province;
 use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
 {
@@ -30,13 +31,69 @@ class IndexController extends Controller
 
     public function product()
     {
-        $product = Product::orderBy('DESC')->paginate(10);
-        $member = MemberProduct::with('product')->orderBy('DESC')->paginate(10);
-        return view('anggota.produk.produk', compact('product', 'member'));
+        $product = Product::orderBy('created_at','DESC')->paginate(10);
+        $member = Auth::guard('member')->user();
+        $memberprod = MemberProduct::where('anggota_id', $member->id)->with('product')->orderBy('created_at','DESC')->paginate(10);
+        return view('anggota.produk.produk', compact('product', 'memberprod'));
+        // dd($member);
+    }
+
+    public function productStore(Request $request)
+    {
+        $this->validate($request, [
+            'product_id'    => 'required',
+        ]);
+
+        $member = Auth::guard('member')->user();
+        $product = MemberProduct::where('anggota_id', $member->id)->first();
+
+        if ($product != null) {
+            if ($request->is('product_id') == $product->where('product_id', $request->product_id)->first()) {
+                MemberProduct::create([
+                    'anggota_id' => $member->id,
+                    'product_id' => $request->product_id,
+                    'stok' => 0,
+                    'status' => 1
+                ]);
+
+                return back()->with(['success' => 'Produk Baru Ditambahkan']);
+            } else {
+                return back()->with(['error' => 'Produk sudah ditambahkan']);
+            }
+        } elseif ($product == null) {
+            MemberProduct::create([
+                'anggota_id' => $member->id,
+                'product_id' => $request->product_id,
+                'stok' => 0,
+                'status' => 1
+            ]);
+
+            return back()->with(['success' => 'Produk Baru Ditambahkan']);
+        }
+
     }
 
     public function stock()
     {
-        return view('anggota.produk.stock');
+        $member = Auth::guard('member')->user();
+        $memberprod = MemberProduct::where('anggota_id', $member->id)->with('product')->orderBy('created_at','DESC')->paginate(10);
+        return view('anggota.produk.stock', compact('memberprod'));
+    }
+
+    public function updateStock(Request $request)
+    {
+        $this->validate($request, [
+            'stock'    => 'required',
+        ]);
+
+        $member = Auth::guard('member')->user();
+        $prod = MemberProduct::where('anggota_id', $member->id)->get();
+        foreach ($prod as $key) {
+            $product = MemberProduct::find($key->id);
+            $product->stok = $request->stock[$key->id];
+            $product->save();
+        }
+
+        return back()->with(['success' => 'Stok telah diubah']);
     }
 }

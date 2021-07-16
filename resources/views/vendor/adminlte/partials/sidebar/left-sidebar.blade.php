@@ -41,8 +41,14 @@
                         <p>Anggota</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('product.index') }}" class="nav-link {{ (request()->is('admin/product*')) ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-store"></i>
+                        <p>Produk</p>
+                    </a>
+                </li>
                 @endif
-                @if (Auth::user()->roles == 'admin')
+                {{-- @if (Auth::user()->roles == 'admin')
                 <li class="nav-item">
                     <a href="{{ route('category.index') }}" class="nav-link {{ (request()->is('admin/kategori*')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-th-large"></i>
@@ -55,7 +61,7 @@
                         <i class="nav-icon fas fa-video"></i>
                         <p>Video</p>
                     </a>
-                </li>
+                </li> --}}
                 @if (Auth::user()->roles == 'admin')
                 <li class="nav-item">
                     <a href="{{ route('user.index') }}" class="nav-link {{ (request()->is('admin/user*')) ? 'active' : '' }}">

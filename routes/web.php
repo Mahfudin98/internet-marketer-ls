@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AnggotaController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Anggota\IndexController;
 use App\Http\Controllers\Anggota\LoginController;
@@ -34,6 +35,9 @@ Route::group(['middleware' => 'member'], function() {
     })->name('member.setting');
     Route::get('/stock', [IndexController::class, 'stock'])->name('member.stok');
     Route::get('/produk', [IndexController::class, 'product'])->name('member.produk');
+    Route::post('/produk', [IndexController::class, 'productStore'])->name('member.product.store');
+    // update stok
+    Route::post('/produk-update', [IndexController::class, 'updateStock'])->name('member.update.stock');
 });
 Route::group(['middleware' => ['auth']], function (){
     Route::prefix('admin')->group(function () {
@@ -53,6 +57,10 @@ Route::group(['middleware' => ['auth']], function (){
         Route::get('/user', [UserController::class, 'index'])->name('user.index');
         Route::post('/user', [UserController::class, 'store'])->name('user.store');
         Route::put('/user/edit/{id}', [UserController::class, 'update'])->name('user.update');
+        // product controller
+        Route::get('/product', [ProductController::class, 'index'])->name('product.index');
+        Route::post('/product', [ProductController::class, 'store'])->name('product.store');
+        Route::get('/product/edit', [ProductController::class, 'edit'])->name('product.edit');
     });
 });
 

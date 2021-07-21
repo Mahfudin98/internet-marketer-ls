@@ -27,8 +27,8 @@ class DashboardController extends Controller
             $data['sum'][] = $row->member->sum('stok');
         }
         $data['chart_data'] = json_encode($data);
-        dd($data);
-        // return view('admin.dashboard', $data, compact('member'));
+        // dd($data);
+        return view('admin.dashboard', $data, compact('member'));
     }
 
     // public function stok($id)

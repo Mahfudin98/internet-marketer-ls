@@ -10,12 +10,13 @@
         <button class="t-header-toggler t-header-mobile-toggler d-block d-lg-none">
           <i class="mdi mdi-menu" style="color: #fff"></i>
         </button>
-        {{-- <form action="#" class="t-header-search-box">
+        <form action="#" class="t-header-search-box">
+            {{ csrf_field() }}
           <div class="input-group">
-            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Search" autocomplete="off">
+            <input type="text" class="form-control" name="q" id="inlineFormInputGroup" placeholder="Search" autocomplete="off">
             <button class="btn btn-primary" type="submit"><i class="mdi mdi-arrow-right-thick"></i></button>
           </div>
-        </form> --}}
+        </form>
         <ul class="nav ml-auto">
           <li class="nav-item dropdown">
             <a class="nav-link" href="{{ route('member.logout') }}">

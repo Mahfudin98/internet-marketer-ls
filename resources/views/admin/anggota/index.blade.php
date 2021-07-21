@@ -16,14 +16,6 @@
             <div class="card">
                 <div class="card-header">
                     <a href="{{ route('anggota.create') }}" class="btn btn-primary"><i class="nav-icon fas fa-user-plus"></i> Add Anggota</a>
-                    <form action="{{ route('anggota.index') }}" method="GET">
-                        <div class="input-group col-sm-4 float-right">
-                            <input type="text" class="form-control" placeholder="Cari Nama" name="q" value="{{ request()->q }}" aria-label="Cari Nama" aria-describedby="button-addon2">
-                            <div class="input-group-append">
-                              <button class="btn btn-secondary" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
-                            </div>
-                        </div>
-                    </form>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -81,10 +73,18 @@
                                         <form action="{{ route('anggota.destroy', $row->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <div class="btn-group" role="group" aria-label="Basic example">
-                                                <a href="{{ route('anggota.edit', $row->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
-                                                <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
-                                            </div>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-danger">Action</button>
+                                                <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                  <span class="sr-only">Toggle Dropdown</span>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a href="{{ route('anggota.edit', $row->id) }}" class="dropdown-item"><i class="fas fa-edit"></i> Edit</a>
+                                                    <button type="submit" class="dropdown-item btn-btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                                  <div class="dropdown-divider"></div>
+                                                  <a class="dropdown-item" href="#">Stok</a>
+                                                </div>
+                                              </div>
                                         </form>
                                     </td>
                                 </tr>

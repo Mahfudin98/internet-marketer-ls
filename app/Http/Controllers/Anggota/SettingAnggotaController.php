@@ -15,7 +15,11 @@ class SettingAnggotaController extends Controller
     public function index()
     {
         $member = Auth::guard('member')->user();
-        $memberprod = MemberProduct::where('anggota_id', $member->id)->with('product')->orderBy('created_at','DESC')->get();
+        $memberprod = MemberProduct::where('anggota_id', $member->id)->with('product')->orderBy('created_at','DESC');
+        if (request()->q != '') {
+            $memberprod = $memberprod->where('name_products', 'LIKE', '%' . request()->q . '%');
+        }
+        $memberprod = $memberprod->get();
 
         return view('anggota.user-setting.user', compact('memberprod'));
     }

@@ -27,7 +27,11 @@ class IndexController extends Controller
     public function index()
     {
         $member = Auth::guard('member')->user();
-        $memberprod = MemberProduct::where('anggota_id', $member->id)->with('product')->orderBy('created_at','DESC')->get();
+        $memberprod = MemberProduct::where('anggota_id', $member->id)->with(['product'])->orderBy('created_at','DESC');
+        if (request()->q != '') {
+            $memberprod = $memberprod->where('name_products', 'LIKE', '%' . request()->q . '%');
+        }
+        $memberprod = $memberprod->get();
         $data = [];
         foreach ($memberprod as $row) {
             $data['label'][] = $row->product->name;
@@ -39,7 +43,11 @@ class IndexController extends Controller
 
     public function product()
     {
-        $product = Product::orderBy('created_at','DESC')->paginate(10);
+        $product = Product::orderBy('created_at','DESC');
+        if (request()->q != '') {
+            $product = $product->where('name', 'LIKE', '%' . request()->q . '%');
+        }
+        $product = $product->get();
         $member = Auth::guard('member')->user();
         $memberprod = MemberProduct::where('anggota_id', $member->id)->with('product')->orderBy('created_at','DESC')->paginate(10);
         return view('anggota.produk.produk', compact('product', 'memberprod'));
@@ -59,6 +67,7 @@ class IndexController extends Controller
             if ($request->is('product_id') == $product->where('product_id', $request->product_id)->first()) {
                 MemberProduct::create([
                     'anggota_id' => $member->id,
+                    'name_products' => $request->name,
                     'product_id' => $request->product_id,
                     'stok' => 0,
                     'status' => 1

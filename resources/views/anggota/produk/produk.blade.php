@@ -58,6 +58,7 @@
                                             <td>
                                                 <form action="{{ route('member.product.store') }}" method="post">
                                                     @csrf
+                                                    <input type="hidden" name="name" value="{{ $row->name }}">
                                                     <input type="hidden" name="product_id" value="{{ $row->id }}">
                                                     <button class="btn btn-primary has-icon" type="submit"><i
                                                             class="mdi mdi-plus-circle-outline"></i> Tambah Produk</button>
@@ -66,7 +67,7 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="4" class="text-center">Data Masih Kosong</td>
+                                            <td colspan="4" class="text-center">Data Tidak Ada</td>
                                         </tr>
                                     @endforelse
                                 </tbody>

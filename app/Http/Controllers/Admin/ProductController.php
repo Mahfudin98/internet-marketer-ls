@@ -11,7 +11,11 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $product = Product::orderBy('created_at', 'DESC')->paginate(10);
+        $product = Product::orderBy('created_at', 'DESC');
+        if (request()->q != '') {
+            $product = $product->where('name', 'LIKE', '%' . request()->q . '%');
+        }
+        $product = $product->paginate(10);
         return view('admin.produk.index', compact('product'));
     }
 

@@ -14,18 +14,6 @@
                     <div class="alert alert-success">{{ session('success') }}</div>
                 @endif
                 <div class="card">
-                    <div class="card-header">
-                        <form action="{{ route('anggota.index') }}" method="GET">
-                            <div class="input-group col-sm-4 float-right">
-                                <input type="text" class="form-control" placeholder="Cari Nama" name="q"
-                                    value="{{ request()->q }}" aria-label="Cari Nama" aria-describedby="button-addon2">
-                                <div class="input-group-append">
-                                    <button class="btn btn-secondary" type="submit" id="button-addon2"><i
-                                            class="fas fa-search"></i></button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">

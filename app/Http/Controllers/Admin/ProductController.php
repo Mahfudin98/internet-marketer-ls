@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 class ProductController extends Controller
@@ -40,5 +41,14 @@ class ProductController extends Controller
         }
 
         return redirect(route('product.index'))->with(['success' => 'Produk Baru Ditambahkan']);
+    }
+
+    public function destroy($id)
+    {
+        $product = Product::find($id);
+        File::delete(storage_path('app/public/product/' . $product->image));
+
+        $product->delete();
+        return redirect(route('product.index'))->with(['success' => 'Product Berhasil diHapus']);
     }
 }

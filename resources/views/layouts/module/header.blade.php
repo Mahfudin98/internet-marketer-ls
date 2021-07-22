@@ -1,6 +1,6 @@
 <nav class="t-header">
     <div class="t-header-brand-wrapper">
-      <a href="index.html">
+      <a href="{{ route('login.form') }}">
         <img class="logo" src="{{ asset('img/logo-2.svg') }}" width="104px" alt="logo">
         <img class="logo-mini" src="{{ asset('img/logo_mini.svg') }}" alt="">
       </a>
@@ -13,7 +13,7 @@
         <form action="#" class="t-header-search-box">
             {{ csrf_field() }}
           <div class="input-group">
-            <input type="text" class="form-control" name="q" id="inlineFormInputGroup" placeholder="Search" autocomplete="off">
+            <input type="text" class="form-control" name="q" id="inlineFormInputGroup" placeholder="Search Product" autocomplete="off">
             <button class="btn btn-primary" type="submit"><i class="mdi mdi-arrow-right-thick"></i></button>
           </div>
         </form>

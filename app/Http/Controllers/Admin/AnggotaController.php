@@ -16,12 +16,14 @@ class AnggotaController extends Controller
 {
     public function index()
     {
-        $anggota = Anggota::with('district')->orderBy('created_at', 'desc');
+        $anggota = Anggota::with(['district'])->orderBy('created_at', 'desc');
         if (request()->q != '') {
             $anggota = $anggota->where('name', 'LIKE', '%' . request()->q . '%');
         }
         $anggota = $anggota->paginate(10);
-        return view('admin.anggota.index', compact('anggota'));
+        $sosmed = Sosmed::with(['anggota'])->first();
+
+        return view('admin.anggota.index', compact('anggota', 'sosmed'));
     }
 
     public function create()
@@ -183,5 +185,27 @@ class AnggotaController extends Controller
         $sosmed->delete();
         $anggota->delete();
         return redirect(route('anggota.index'))->with(['success' => 'Anggota Berhasil diHapus']);
+    }
+
+    public function sosmed($id)
+    {
+        $anggota = Anggota::find($id);
+        return view('admin.anggota.sosmed', compact('anggota'));
+    }
+
+    public function postSosmed(Request $request)
+    {
+        $this->validate($request, [
+            'anggota_id' => 'required'
+        ]);
+        $sosmed = Sosmed::create([
+            'anggota_id' => $request->anggota_id,
+            'facebook' => $request->fb,
+            'instagram' => $request->ig,
+            'tiktok' => $request->tt,
+            'shopee' => $request->shopee,
+        ]);
+
+        return redirect(route('anggota.index'))->with(['success' => 'Sosmed berhasil ditambahkan']);
     }
 }

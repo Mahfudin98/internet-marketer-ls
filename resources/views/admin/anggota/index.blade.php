@@ -79,10 +79,17 @@
                                                   <span class="sr-only">Toggle Dropdown</span>
                                                 </button>
                                                 <div class="dropdown-menu">
-                                                    <a href="{{ route('anggota.edit', $row->id) }}" class="dropdown-item"><i class="fas fa-edit"></i> Edit</a>
-                                                    <button type="submit" class="dropdown-item btn-btn-danger"><i class="fas fa-trash"></i> Hapus</button>
-                                                  <div class="dropdown-divider"></div>
-                                                  <a class="dropdown-item" href="#">Stok</a>
+                                                    @if ($sosmed->where('anggota_id', $row->id) != null)
+                                                        <a href="{{ route('anggota.edit', $row->id) }}" class="dropdown-item"><i class="fas fa-edit"></i> Edit</a>
+                                                        <button type="submit" class="dropdown-item btn-btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                                        <div class="dropdown-divider"></div>
+                                                        <a class="dropdown-item disabled" href="#">Sosmed</a>
+                                                    @else
+                                                        <p class="dropdown-item disabled"><i class="fas fa-edit"></i> Edit</p>
+                                                        <button type="submit" class="dropdown-item btn-btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+                                                        <div class="dropdown-divider"></div>
+                                                        <a class="dropdown-item" href="{{ route('anggota.sosmed', $row->id) }}">Sosmed</a>
+                                                    @endif
                                                 </div>
                                               </div>
                                         </form>

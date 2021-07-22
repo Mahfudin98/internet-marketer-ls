@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\MemberProduct;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -46,8 +47,9 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::find($id);
+        $member = MemberProduct::where('product_id', $product->id);
         File::delete(storage_path('app/public/product/' . $product->image));
-
+        $member->delete();
         $product->delete();
         return redirect(route('product.index'))->with(['success' => 'Product Berhasil diHapus']);
     }
@@ -74,6 +76,9 @@ class ProductController extends Controller
             $filename = time() . Str::slug($request->name) . '.' . $file->getClientOriginalExtension();
             $file->storeAs('public/product', $filename);
             File::delete(storage_path('app/public/product/' . $product->image));
+        }
+        if ($request->image != '') {
+            $data['image'] = $filename;
         }
         $product->update($data);
 

@@ -15,19 +15,51 @@
                     @csrf
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="name">Nama</label>
                                     <input type="text" class="form-control" name="name" id="name" placeholder="Nama Anggota" required>
                                 </div>
                                 <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input type="text" class="form-control" name="username" id="username" placeholder="Username Anggota" required>
+                                    <p><small>*Username harus unique, contoh: <strong>reseller123</strong></small></p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control" name="password" id="password" placeholder="Password Anggota" required>
+                                </div>
+                                <div class="form-group">
                                     <label for="phone">Nomor HP/Whataspp</label>
                                     <input type="tel" class="form-control" name="phone" id="phone" placeholder="Nomor HP Anggota" required>
+                                    <p><small>*Nomor hp dimulai dari 08 bukan 62/+62. contoh: <strong>081234567890</strong></small></p>
                                 </div>
                                 <div class="form-group">
                                     <label for="link">Link CTA*</label>
                                     <input type="text" class="form-control" name="link" id="link" placeholder="Link Rotator">
                                     <p><small>*Masukan link CTA jika ada</small></p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="fb">Facebook</label>
+                                    <input type="text" class="form-control" name="fb" id="fb" placeholder="Link Facebook">
+                                    <p><small>*Kosongkan jika tidak ada</small></p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ig">Instagram</label>
+                                    <input type="text" class="form-control" name="ig" id="ig" placeholder="Link Instagram">
+                                    <p><small>*Kosongkan jika tidak ada</small></p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tt">Tik Tok</label>
+                                    <input type="text" class="form-control" name="tt" id="tt" placeholder="Link Tik Tok">
+                                    <p><small>*Kosongkan jika tidak ada</small></p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="shopee">Shopee</label>
+                                    <input type="text" class="form-control" name="shopee" id="shopee" placeholder="Link Shopee">
+                                    <p><small>*Kosongkan jika tidak ada</small></p>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputGroupSelect01">Tipe Anggota</label>
@@ -42,15 +74,8 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="status">Status</label>
-                                    <select class="custom-select" name="status" id="status" required>
-                                        <option value="1">Aktif</option>
-                                        <option value="0">Nonaktif</option>
-                                    </select>
-                                </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="form-label" for="province_id">Provinsi</label>
                                     <select class="form-control" name="province_id" id="province_id" data-width="fit" data-style="form-control form-control-lg" data-title="Pilih Provinsi" required>
@@ -88,6 +113,13 @@
                                         </div>
                                     </div>
                                     <p><strong>*Kosongkan jika tidak ada foto</strong></p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="status">Status</label>
+                                    <select class="custom-select" name="status" id="status" required>
+                                        <option value="1">Aktif</option>
+                                        <option value="0">Nonaktif</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>

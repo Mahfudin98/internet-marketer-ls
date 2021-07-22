@@ -33,4 +33,9 @@ class Anggota extends Authenticatable
     {
         return $this->hasMany(MemberProduct::class);
     }
+
+    public function sosmed()
+    {
+        return $this->hasMany(Sosmed::class);
+    }
 }

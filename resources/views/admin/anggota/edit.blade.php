@@ -23,7 +23,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="username">Username</label>
-                                    <input type="text" class="form-control" name="username" id="username" value="{{ $anggota->username }}" disabled>
+                                    <input type="text" class="form-control" name="username" id="username" value="{{ $anggota->username }}" required>
                                     <p><small>*Username harus unique, contoh: <strong>reseller123</strong></small></p>
                                 </div>
                                 <div class="form-group">

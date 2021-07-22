@@ -128,11 +128,12 @@ class AnggotaController extends Controller
             'type'        => 'required',
             'status'      => 'required',
             'link'        => 'nullable',
+            'username'    => 'required|unique:anggotas|max:255',
             'image'       => 'nullable|image|mimes:png,jpeg,jpg'
         ]);
 
         $anggota = Anggota::find($id);
-        $data = $request->only('name', 'district_id', 'password', 'slug', 'alamat', 'phone', 'link', 'image', 'type', 'status');
+        $data = $request->only('name', 'district_id', 'username', 'password', 'slug', 'alamat', 'phone', 'link', 'image', 'type', 'status');
         $filename = $anggota->image;
         if ($request->hasFile('image')) {
             $file = $request->file('image');
@@ -156,23 +157,12 @@ class AnggotaController extends Controller
         }
         $anggota->update($data);
         $sosmed = Sosmed::where('anggota_id', $anggota->id);
-        if ($sosmed != null) {
-            $sosmed->update([
-                'facebook' => $request->fb,
-                'instagram' => $request->ig,
-                'tiktok' => $request->tt,
-                'shopee' => $request->shopee
-            ]);
-        } else {
-            $sosmed->create([
-                'anggota_id' => $anggota->id,
-                'facebook' => $request->fb,
-                'instagram' => $request->ig,
-                'tiktok' => $request->tt,
-                'shopee' => $request->shopee
-            ]);
-        }
-
+        $sosmed->update([
+            'facebook' => $request->fb,
+            'instagram' => $request->ig,
+            'tiktok' => $request->tt,
+            'shopee' => $request->shopee
+        ]);
 
         return redirect(route('anggota.index'))->with(['success' => 'Anggota Berhasil diUpdate']);
     }

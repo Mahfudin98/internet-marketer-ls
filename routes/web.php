@@ -60,9 +60,12 @@ Route::group(['middleware' => ['auth']], function (){
         Route::post('/user', [UserController::class, 'store'])->name('user.store');
         Route::put('/user/edit/{id}', [UserController::class, 'update'])->name('user.update');
         // product controller
-        Route::get('/product', [ProductController::class, 'index'])->name('product.index');
-        Route::post('/product', [ProductController::class, 'store'])->name('product.store');
-        Route::get('/product/edit', [ProductController::class, 'edit'])->name('product.edit');
+        Route::resource('/product', ProductController::class);
+        // Route::get('/product', [ProductController::class, 'index'])->name('product.index');
+        // Route::post('/product', [ProductController::class, 'store'])->name('product.store');
+        // Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('product.delete');
+        // Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
+        // Route::put('/product/update/{id}', [ProductController::class, 'update'])->name('product.update');
     });
 });
 

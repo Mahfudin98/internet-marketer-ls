@@ -49,11 +49,11 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <form action="{{ route('anggota.destroy', $row->id) }}" method="POST">
+                                                <form action="{{ route('product.destroy', $row->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                                        <a href="{{ route('anggota.edit', $row->id) }}"
+                                                        <a href="{{ route('product.edit', $row->id) }}"
                                                             class="btn btn-warning"><i class="fas fa-edit"></i></a>
                                                         <button type="submit" class="btn btn-danger"><i
                                                                 class="fas fa-trash"></i></button>

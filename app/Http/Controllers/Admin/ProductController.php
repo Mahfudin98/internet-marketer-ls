@@ -51,4 +51,32 @@ class ProductController extends Controller
         $product->delete();
         return redirect(route('product.index'))->with(['success' => 'Product Berhasil diHapus']);
     }
+
+    public function edit($id)
+    {
+        $product = Product::find($id);
+        return view('admin.produk.edit', compact('product'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'name'        => 'required|string|max:100',
+            'type'        => 'required',
+            'image'       => 'nullable|image|mimes:png,jpeg,jpg'
+        ]);
+
+        $product = Product::find($id);
+        $data = $request->only('name', 'type', 'image');
+        $filename = $product->image;
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = time() . Str::slug($request->name) . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('public/product', $filename);
+            File::delete(storage_path('app/public/product/' . $product->image));
+        }
+        $product->update($data);
+
+        return redirect(route('product.index'))->with(['success' => 'Product Berhasil diUpdate']);
+    }
 }

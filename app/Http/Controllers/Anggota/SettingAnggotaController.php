@@ -21,8 +21,9 @@ class SettingAnggotaController extends Controller
             $memberprod = $memberprod->where('name_products', 'LIKE', '%' . request()->q . '%');
         }
         $memberprod = $memberprod->get();
+        $sosmed = Sosmed::where('anggota_id', $member->id)->first();
 
-        return view('anggota.user-setting.user', compact('memberprod'));
+        return view('anggota.user-setting.user', compact('memberprod', 'sosmed'));
     }
 
     public function edit()
@@ -70,5 +71,34 @@ class SettingAnggotaController extends Controller
         $anggota->update($data);
 
         return redirect(route('member.setting'))->with(['success' => 'Data Berhasil diUpdate']);
+    }
+
+    public function sosmedCreate()
+    {
+        $member = Auth::guard('member')->user();
+        $sosmed = Sosmed::where('anggota_id', $member->id)->first();
+        return view('anggota.user-setting.createsosmed', compact('sosmed'));
+    }
+
+    public function sosmedPost(Request $request)
+    {
+        $this->validate($request, [
+            'anggota_id' => 'required'
+        ]);
+        $sosmed = Sosmed::create([
+            'anggota_id' => $request->anggota_id,
+            'facebook' => $request->fb,
+            'instagram' => $request->ig,
+            'tiktok' => $request->tt,
+            'shopee' => $request->shopee,
+        ]);
+        return redirect(route('member.setting'))->with(['success' => 'Sosmed Berhasil ditambahkan!']);
+    }
+
+    public function sosmedEdit()
+    {
+        $member = Auth::guard('member')->user();
+        $sosmed = Sosmed::where('anggota_id', $member->id)->first();
+        return view('anggota.user-setting.editsosmed', compact('sosmed'));
     }
 }

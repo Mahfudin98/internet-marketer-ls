@@ -40,6 +40,11 @@ Route::group(['middleware' => 'member'], function() {
     Route::post('/produk', [IndexController::class, 'productStore'])->name('member.product.store');
     // update stok
     Route::post('/produk-update', [IndexController::class, 'updateStock'])->name('member.update.stock');
+
+    // sosmed
+    Route::get('/user/sosmed-create', [SettingAnggotaController::class, 'sosmedCreate'])->name('member.sosmed');
+    Route::post('/user/sosmed-post', [SettingAnggotaController::class, 'sosmedPost'])->name('member.sosmed.post');
+    Route::get('/user/sosmed-edit', [SettingAnggotaController::class, 'sosmedEdit'])->name('member.sosmed.edit');
 });
 Route::group(['middleware' => ['auth']], function (){
     Route::prefix('admin')->group(function () {

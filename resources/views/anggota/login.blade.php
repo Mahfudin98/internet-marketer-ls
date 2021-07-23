@@ -24,7 +24,7 @@
       <div class="row">
         <div class="col-12 logo-section">
           <a href="{{ route('member.index') }}" class="logo">
-            <img id="logo" src="{{ asset('img/logo-baru.png') }}" alt="logo" >
+            <img id="logo" src="{{ asset('img/logo-login.png') }}" alt="logo" >
             {{-- <img src="{{ asset('img/logo-ls.png') }}" alt="logo" /> --}}
           </a>
         </div>

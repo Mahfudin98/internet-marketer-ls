@@ -101,11 +101,11 @@
                             </div>
                             {{-- ---------------- --}}
                             <div class="d-flex flex-row mt-4 mb-4">
-                                <a href="{{ route('member.setting.edit') }}" class="w-100 ml-2">
+                                {{-- <a href="{{ route('member.setting.edit') }}" class="w-100 ml-2">
                                     <button class="btn btn-primary w-100 ml-2" type="button">
                                         <i class="mdi mdi-pencil"></i> Edit Profile
                                     </button>
-                                </a>
+                                </a> --}}
                             </div>
                             <div class="d-flex mt-5 mb-3">
                                 <small

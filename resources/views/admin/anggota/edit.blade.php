@@ -28,8 +28,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Password</label>
-                                    <input type="password" class="form-control" name="password" id="password" placeholder="Password Anggota">
-                                    <p><small>*Kosongkan jika tidak ingin mengganti</small></p>
+                                    <div class="input-group" id="show_hide_password">
+                                        <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+                                        <div class="input-group-prepend">
+                                        <a class="input-group-text" id="basic-addon1" href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                                        </div>
+                                    </div>
+                                    <p><small>*Kosongkan Jika tidak ingin mengganti</small></p>
                                 </div>
                                 <div class="form-group">
                                     <label for="phone">Nomor HP/Whataspp</label>
@@ -126,6 +131,22 @@
 @section('js')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+<script>
+    $(document).ready(function() {
+    $("#show_hide_password a").on('click', function(event) {
+        event.preventDefault();
+        if($('#show_hide_password input').attr("type") == "text"){
+            $('#show_hide_password input').attr('type', 'password');
+            $('#show_hide_password i').addClass( "fa-eye-slash" );
+            $('#show_hide_password i').removeClass( "fa-eye" );
+        }else if($('#show_hide_password input').attr("type") == "password"){
+            $('#show_hide_password input').attr('type', 'text');
+            $('#show_hide_password i').removeClass( "fa-eye-slash" );
+            $('#show_hide_password i').addClass( "fa-eye" );
+        }
+    });
+});
+</script>
 <script type="text/javascript">
     $(document).ready(function(){
         loadCity($('#province_id').val(), 'bySelect').then(() => {

@@ -82,7 +82,7 @@
                                                     <a href="{{ route('anggota.edit', $row->id) }}" class="dropdown-item"><i class="fas fa-edit"></i> Edit</a>
                                                     <button type="submit" class="dropdown-item btn-btn-danger"><i class="fas fa-trash"></i> Hapus</button>
                                                     <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" href="{{ route('anggota.sosmed', $row->id) }}">Sosmed</a>
+                                                    <a class="dropdown-item disabled" href="{{ route('anggota.sosmed', $row->id) }}">Sosmed</a>
                                                 </div>
                                               </div>
                                         </form>

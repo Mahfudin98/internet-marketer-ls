@@ -45,6 +45,7 @@ Route::group(['middleware' => 'member'], function() {
     Route::get('/user/sosmed-create', [SettingAnggotaController::class, 'sosmedCreate'])->name('member.sosmed');
     Route::post('/user/sosmed-post', [SettingAnggotaController::class, 'sosmedPost'])->name('member.sosmed.post');
     Route::get('/user/sosmed-edit', [SettingAnggotaController::class, 'sosmedEdit'])->name('member.sosmed.edit');
+    Route::put('/user/sosmed-update/{id}', [SettingAnggotaController::class, 'sosmedUpdate'])->name('member.sosmed.update');
 });
 Route::group(['middleware' => ['auth']], function (){
     Route::prefix('admin')->group(function () {

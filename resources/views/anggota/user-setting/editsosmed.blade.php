@@ -26,8 +26,9 @@
                         <p class="grid-header">Edit Sosmed</p>
                         <div class="grid-body">
                             <div class="item-wrapper">
-                                <form action="{{ route('member.sosmed.post') }}" method="POST">
+                                <form action="{{ route('member.sosmed.update', $sosmed->id) }}" method="POST">
                                     @csrf
+                                    @method('PUT')
                                     <input type="hidden" name="anggota_id" value="{{ auth()->guard('member')->user()->id }}">
                                     <div class="form-group row showcase_row_area">
                                         <label for="fb">Facebook</label>

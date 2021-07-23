@@ -101,4 +101,16 @@ class SettingAnggotaController extends Controller
         $sosmed = Sosmed::where('anggota_id', $member->id)->first();
         return view('anggota.user-setting.editsosmed', compact('sosmed'));
     }
+
+    public function sosmedUpdate(Request $request, $id)
+    {
+        $sosmed = Sosmed::find($id);
+        $sosmed->update([
+            'facebook' => $request->fb,
+            'instagram' => $request->ig,
+            'tiktok' => $request->tt,
+            'shopee' => $request->shopee,
+        ]);
+        return redirect(route('member.setting'))->with(['success' => 'Sosmed Berhasil update!']);
+    }
 }

@@ -113,9 +113,8 @@ class AnggotaController extends Controller
     public function edit($id)
     {
         $anggota = Anggota::with(['district'])->find($id);
-        $sosmed = Sosmed::where('anggota_id', $anggota->id)->first();
         $provinces = Province::orderBy('created_at', 'DESC')->get();
-        return view('admin.anggota.edit', compact('anggota', 'provinces', 'sosmed'));
+        return view('admin.anggota.edit', compact('anggota', 'provinces'));
     }
 
     public function update(Request $request, $id)
@@ -156,13 +155,6 @@ class AnggotaController extends Controller
             $data['password'] = $request->password;
         }
         $anggota->update($data);
-        $sosmed = Sosmed::where('anggota_id', $anggota->id);
-        $sosmed->update([
-            'facebook' => $request->fb,
-            'instagram' => $request->ig,
-            'tiktok' => $request->tt,
-            'shopee' => $request->shopee
-        ]);
 
         return redirect(route('anggota.index'))->with(['success' => 'Anggota Berhasil diUpdate']);
     }

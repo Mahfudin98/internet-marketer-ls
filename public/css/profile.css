@@ -21,7 +21,7 @@ html *{
     padding: .625rem 0;
     margin-bottom: 20px;
     color: #555;
-    background-color: #fff!important;
+    background-color: #fff3e7!important;
     box-shadow: 0 4px 18px 0 rgba(0,0,0,.12), 0 7px 10px -5px rgba(0,0,0,.15) !important;
     z-index: 1000 !important;
     transition: all 150ms ease 0s;
@@ -33,7 +33,7 @@ html *{
     background-color: transparent!important;
     box-shadow: none !important;
     padding-top: 25px;
-    color: #fff;
+    color: #fff3e7;
 }
 
 .navbar .navbar-brand {
@@ -124,7 +124,7 @@ a .material-icons {
 }
 
 .main {
-    background: #FFF;
+    background: #fff3e7;
     position: relative;
     z-index: 3;
 }
@@ -198,7 +198,7 @@ p {
 }
 
 .nav-pills .nav-item .nav-link.active {
-    color: #fff;
+    color: #fff3e7;
     background-color: #25D366;
     box-shadow: 0 5px 20px 0 rgba(0,0,0,.2), 0 13px 24px -11px rgba(156,39,176,.6);
 }
@@ -313,7 +313,7 @@ img.rounded {
     font-size: 1rem;
     color: #212529;
     text-align: left;
-    background-color: #fff;
+    background-color: #fff3e7;
     background-clip: padding-box;
     border-radius: .25rem;
     transition: transform .3s cubic-bezier(.4,0,.2,1),opacity .2s cubic-bezier(.4,0,.2,1);
@@ -327,7 +327,7 @@ img.rounded {
 .dropdown-menu .dropdown-item:focus, .dropdown-menu .dropdown-item:hover, .dropdown-menu a:active, .dropdown-menu a:focus, .dropdown-menu a:hover {
     box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(156,39,176,.4);
     background-color: #9c27b0;
-    color: #FFF;
+    color: #fff3e7;
 }
 .show .dropdown-toggle:after {
     transform: rotate(180deg);

@@ -16,7 +16,7 @@
                     @method('PATCH')
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="name">Nama</label>
                                     <input type="text" class="form-control" name="name" id="name" value="{{ $anggota->name }}" required>
@@ -41,28 +41,6 @@
                                     <input type="text" class="form-control" name="link" id="link" value="{{ $anggota->link }}" placeholder="Link Rotator">
                                     <p><small>*Masukan link CTA jika ada</small></p>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="fb">Facebook</label>
-                                    <input type="text" class="form-control" name="fb" id="fb" placeholder="Link Facebook" value="{{ $sosmed->facebook }}">
-                                    <p><small>*Kosongkan jika tidak ada</small></p>
-                                </div>
-                                <div class="form-group">
-                                    <label for="ig">Instagram</label>
-                                    <input type="text" class="form-control" name="ig" id="ig" placeholder="Link Instagram" value="{{ $sosmed->instagram }}">
-                                    <p><small>*Kosongkan jika tidak ada</small></p>
-                                </div>
-                                <div class="form-group">
-                                    <label for="tt">Tik Tok</label>
-                                    <input type="text" class="form-control" name="tt" id="tt" placeholder="Link Tik Tok" value="{{ $sosmed->tiktok }}">
-                                    <p><small>*Kosongkan jika tidak ada</small></p>
-                                </div>
-                                <div class="form-group">
-                                    <label for="shopee">Shopee</label>
-                                    <input type="text" class="form-control" name="shopee" id="shopee" placeholder="Link Shopee" value="{{ $sosmed->shopee }}">
-                                    <p><small>*Kosongkan jika tidak ada</small></p>
-                                </div>
                                 <div class="form-group">
                                     <label for="inputGroupSelect01">Tipe Anggota</label>
                                     <div class="input-group mb-3">
@@ -77,7 +55,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-label" for="province_id">Provinsi</label>
                                     <select class="form-control" name="province_id" id="province_id" data-width="fit" data-style="form-control form-control-lg" data-title="Pilih Provinsi">

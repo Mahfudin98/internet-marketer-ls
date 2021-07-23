@@ -1,7 +1,7 @@
 <div class="sidebar">
     <div class="user-profile">
       <div class="display-avatar animated-avatar">
-        @if (auth()->guard('member')->user()->type != null)
+        @if (auth()->guard('member')->user()->image != null)
         <img class="profile-img img-lg rounded-circle" src="{{ url('/storage/anggota/'.auth()->guard('member')->user()->image) }}" alt="profile image">
         @else
         <img class="profile-img img-lg rounded-circle" src="{{ asset('img/logo-ls.png') }}" alt="profile image">

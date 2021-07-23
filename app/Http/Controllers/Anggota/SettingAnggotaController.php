@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Anggota;
 use App\Http\Controllers\Controller;
 use App\Models\Anggota;
 use App\Models\MemberProduct;
+use App\Models\Sosmed;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -32,7 +33,8 @@ class SettingAnggotaController extends Controller
     public function member($slug)
     {
         $member = Anggota::with('district')->where('slug', $slug)->first();
-        return view('guest.profile', compact('member'));
+        $sosmed = Sosmed::where('anggota_id', $member->id)->first();
+        return view('guest.profile', compact('member', 'sosmed'));
     }
 
     public function update(Request $request, $id)

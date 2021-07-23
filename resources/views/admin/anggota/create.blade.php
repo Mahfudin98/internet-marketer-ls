@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'AdminLTE')
+@section('title', 'Create Member')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Anggota</h1>
+    <h1 class="m-0 text-dark">Create Member</h1>
 @stop
 
 @section('content')

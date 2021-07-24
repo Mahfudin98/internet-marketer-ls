@@ -23,8 +23,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="username">Username</label>
-                                    <input type="text" class="form-control" name="username" id="username" value="{{ $anggota->username }}" required>
+                                    <input type="text" class="form-control" name="username" id="username" placeholder="Username">
                                     <p><small>*Username harus unique, contoh: <strong>reseller123</strong></small></p>
+                                    @if ($anggota->username != null)
+                                    <p><small>Username Saat Ini : <strong>{{ $anggota->username }}</strong>, kosongkan jika username tidak ingin diganti</small></p>
+                                    @endif
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Password</label>
@@ -111,7 +114,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-success float-right"><i class="nav-icon fas fa-user-plus"></i> Add Anggota</button>
+                        <button type="submit" class="btn btn-success float-right"><i class="nav-icon fas fa-user-plus"></i> Edit Anggota</button>
                     </div>
                 </form>
             </div>

@@ -64,7 +64,7 @@ class IndexController extends Controller
         $product = MemberProduct::where('anggota_id', $member->id)->first();
 
         if ($product != null) {
-            if ($request->is('product_id') == $product->where('product_id', $request->product_id)->first()) {
+            if ($request->is('product_id') == DB::select('select * from member_products where anggota_id ='.$member->id.' and product_id ='.$request->product_id)) {
                 MemberProduct::create([
                     'anggota_id' => $member->id,
                     'name_products' => $request->name,
@@ -73,13 +73,14 @@ class IndexController extends Controller
                     'status' => 1
                 ]);
 
-                return back()->with(['success' => 'Produk Baru Ditambahkan']);
+                return back()->with(['success' => ' Produk Baru Ditambahkan']);
             } else {
                 return back()->with(['error' => 'Produk sudah ditambahkan']);
             }
         } elseif ($product == null) {
             MemberProduct::create([
                 'anggota_id' => $member->id,
+                'name_products' => $request->name,
                 'product_id' => $request->product_id,
                 'stok' => 0,
                 'status' => 1

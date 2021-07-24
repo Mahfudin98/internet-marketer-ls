@@ -127,7 +127,7 @@ class AnggotaController extends Controller
             'type'        => 'required',
             'status'      => 'required',
             'link'        => 'nullable',
-            'username'    => 'required|unique:anggotas|max:255',
+            'username'    => 'nullable|unique:anggotas|max:255',
             'image'       => 'nullable|image|mimes:png,jpeg,jpg'
         ]);
 
@@ -142,6 +142,10 @@ class AnggotaController extends Controller
         }
         if ($request->image != '') {
             $data['image'] = $filename;
+        }
+
+        if ($request->username != '') {
+            $data['username'] = $request->username;
         }
 
         if ($request->phone != '') {

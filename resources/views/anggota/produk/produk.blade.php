@@ -100,7 +100,7 @@
                                         <div class="activity-log">
                                             <p class="log-name">{{ $row->product->name }}</p>
                                             <div class="log-details">
-                                                @if ($row->type == 0)
+                                                @if ($row->product->type == 0)
                                                     <span class="badge badge-warning">Paket</span>
                                                 @else
                                                     <span class="badge badge-primary">Ecer</span>

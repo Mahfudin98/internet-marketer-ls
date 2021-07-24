@@ -25,7 +25,7 @@
                 <div class="col-md-8 equel-grid">
                     <div class="grid">
                         <div class="grid-body py-3">
-                            <p class="card-title ml-n1">Order History</p>
+                            <p class="card-title ml-n1">All Produk {{ ucfirst(auth()->guard('member')->user()->name) }}</p>
                         </div>
                         <form action="{{ route('member.update.stock') }}" method="post">
                             @csrf

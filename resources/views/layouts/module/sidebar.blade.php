@@ -20,13 +20,13 @@
           <i class="mdi mdi-gauge link-icon"></i>
         </a>
       </li>
-      <li class="{{ (request()->is('produk')) ? 'active' : '' }}">
+      <li class="{{ (request()->is('produk/*')) ? 'active' : '' }}">
         <a href="#sample-pages" data-toggle="collapse" aria-expanded="false">
-          <span class="link-title">Tambah Stok</span>
+          <span class="link-title">Manage Stok</span>
           <i class="mdi mdi-archive link-icon"></i>
         </a>
         <ul class="collapse navigation-submenu" id="sample-pages">
-          <li class="{{ (request()->is('produk')) ? 'active' : '' }}">
+          <li class="{{ (request()->is('produk/*')) ? 'active' : '' }}">
             <a href="{{ route('member.produk') }}">Produk</a>
           </li>
           <li class="{{ (request()->is('stock')) ? 'active' : '' }}">

@@ -91,6 +91,25 @@ class IndexController extends Controller
 
     }
 
+    public function editProduct()
+    {
+        $member = Auth::guard('member')->user();
+        $memberprod = MemberProduct::where('anggota_id', $member->id)->with('product')->orderBy('created_at','DESC');
+        if (request()->q != '') {
+            $memberprod = $memberprod->where('name_products', 'LIKE', '%' . request()->q . '%');
+        }
+        $memberprod = $memberprod->get();
+
+        return view('anggota.produk.editproduct', compact('memberprod'));
+    }
+
+    public function destroyProduct($id)
+    {
+        $memberprod = MemberProduct::find($id);
+        $memberprod->delete();
+        return back()->with(['success' => 'Produk telah dihapus']);
+    }
+
     public function stock()
     {
         $member = Auth::guard('member')->user();

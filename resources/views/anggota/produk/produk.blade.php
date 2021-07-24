@@ -73,9 +73,6 @@
                                 </tbody>
                             </table>
                         </div>
-                        {{-- <a class="border-top px-3 py-2 d-block text-gray" href="#">
-              <small class="font-weight-medium"><i class="mdi mdi-chevron-down mr-2"></i>View All Order History</small>
-            </a> --}}
                     </div>
                 </div>
                 <div class="col-md-4 equel-grid">
@@ -89,8 +86,7 @@
                                         <i class="mdi mdi-dots-vertical"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="#">Expand View</a>
-                                        <a class="dropdown-item" href="#">Edit</a>
+                                        <a class="dropdown-item" href="{{ route('member.produk.edit') }}">Edit</a>
                                     </div>
                                 </div>
                             </div>
@@ -116,9 +112,6 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="border-top px-3 py-2 d-block text-gray" href="#">
-                            <small class="font-weight-medium"><i class="mdi mdi-chevron-down mr-2"></i> View All </small>
-                        </a>
                     </div>
                 </div>
             </div>

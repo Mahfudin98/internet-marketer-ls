@@ -35,10 +35,13 @@ Route::group(['middleware' => 'member'], function() {
     Route::get('/user', [SettingAnggotaController::class, 'index'])->name('member.setting');
     Route::get('/user/edit', [SettingAnggotaController::class, 'edit'])->name('member.setting.edit');
     Route::post('/user/update/{id}', [SettingAnggotaController::class, 'update'])->name('member.setting.update');
-    Route::get('/stock', [IndexController::class, 'stock'])->name('member.stok');
+    // produk
     Route::get('/produk', [IndexController::class, 'product'])->name('member.produk');
     Route::post('/produk', [IndexController::class, 'productStore'])->name('member.product.store');
+    Route::get('/produk/edit', [IndexController::class, 'editProduct'])->name('member.produk.edit');
+    Route::delete('/produk/destroy/{id}', [IndexController::class, 'destroyProduct'])->name('member.produk.destroy');
     // update stok
+    Route::get('/stock', [IndexController::class, 'stock'])->name('member.stok');
     Route::post('/produk-update', [IndexController::class, 'updateStock'])->name('member.update.stock');
 
     // sosmed

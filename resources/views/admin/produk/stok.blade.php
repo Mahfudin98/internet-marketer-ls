@@ -13,6 +13,7 @@
                             <thead class="thead-dark">
                                 <tr>
                                     <th>Nama</th>
+                                    <th>Type</th>
                                     <th>Stok</th>
                                 </tr>
                             </thead>
@@ -20,6 +21,13 @@
                                 @forelse ($row->member as $rows)
                                     <tr>
                                         <td>{{ $rows->product->name }}</td>
+                                        <td>
+                                            @if ($rows->product->type == 0)
+                                                <span class="badge badge-success">Paket</span>
+                                            @else
+                                                <span class="badge badge-primary">Ecer</span>
+                                            @endif
+                                        </td>
                                         <td>{{ $rows->stok }}</td>
                                     </tr>
                                 @empty

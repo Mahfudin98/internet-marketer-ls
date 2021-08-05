@@ -2,7 +2,7 @@
     <div class="row">
       <div class="col-sm-6 text-center text-sm-right order-sm-1">
         <ul class="text-gray">
-          <li><a href="#"><i class="mdi mdi-comment-alert-outline"></i> Laporkan Masalah</a></li>
+          <li><a href="https://wa.me/6283823386071?text=Mohon+bantuanya+kak%2C+ada+masalah+pada+website+ini.+Masalahnya+adalah+.....%28sebutkan+masalahnya%29"><i class="mdi mdi-comment-alert-outline"></i> Laporkan Masalah</a></li>
         </ul>
       </div>
       <div class="col-sm-6 text-center text-sm-left mt-3 mt-sm-0">

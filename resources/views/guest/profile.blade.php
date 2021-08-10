@@ -84,7 +84,7 @@
                 <div class="row">
                     <div class="col-md-6 ml-auto mr-auto">
                         <div class="profile">
-                            <div class="avatar">
+                            <div class="image-cropper">
                                 @if ($member->image != null)
                                     <img src="{{ url('/storage/anggota/' . $member->image) }}" alt="Circle Image"
                                         class="img-raised rounded-circle img-fluid">

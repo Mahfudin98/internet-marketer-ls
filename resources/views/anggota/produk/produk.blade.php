@@ -15,9 +15,11 @@
                 <div class="col-12 py-5">
                     <h4>Produk</h4>
                     @if (session('success'))
-                        <div class="alert alert-success">{{ session('success') }}</div>
-                    @elseif (session('error'))
-                        <div class="alert alert-danger">{{ session('error') }}</div>
+                        <div id="success">{{ session('success') }}</div>
+                    @endif
+
+                    @if (session('error'))
+                        <div id="error">{{ session('error') }}</div>
                     @endif
                 </div>
             </div>
@@ -120,5 +122,27 @@
 @endsection
 
 @section('js')
+    <script>
+        $(document).ready(function() {
+            $('#success').trigger("click");
+        });
+        $(document).on('click', '#success', function(e) {
+            swal(
+                'Success',
+                'Produk <b style="color:green;">Success</b> ditambahkan!',
+                'success'
+            )
+        });
 
+        $(document).ready(function() {
+            $('#error').trigger("click");
+        });
+        $(document).on('click', '#error', function(e) {
+            swal(
+                'Error!',
+                'Produk <b style="color:red;">Sudah</b> ditambahkan!',
+                'error'
+            )
+        });
+    </script>
 @endsection

@@ -49,7 +49,8 @@
                                     @forelse ($member as $row)
                                         <tr>
                                             <td class="text-center">
-                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{ $row->id }}">
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                    data-bs-target="#staticBackdrop{{ $row->id }}">
                                                     <i class="fas fa-eye"></i>
                                                 </button>
                                             </td>
@@ -80,28 +81,40 @@
 @stop
 
 @section('css')
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 @endsection
 
 @section('js')
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="{{ asset('admin/src/assets/vendors/chartjs/Chart.min.js') }}"></script>
 <script src="{{ asset('admin/src/assets/js/charts/chartjs.addon.js') }}"></script>
 <script src="{{ asset('admin/src/assets/js/template.js') }}"></script>
 <script>
     if ($("#chartjs-staked-bar-chart").length) {
         const cData = JSON.parse('<?php echo $chart_data; ?>');
+        const chart = cData.bar;
+        const name = Array.from(new Set(chart.map(o => o.nama)));
+        const namePerName = name.map(d => chart.filter(o => o.nama == d));
+        const numberOfName = Math.max.apply(null, namePerName.map(chart => chart.length));
+        const dataSets = [];
+        for (let i = 0; i < numberOfName; i++) {
+            dataSets.push({
+                label: namePerName.map(chart => i < chart.length ? chart[i].product : ''),
+                data: namePerName.map(chart => i < chart.length ? chart[i].stok : 0),
+                backgroundColor: name.map(d =>
+                    "rgba(" + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) +
+                    "," + Math.floor(Math.random() * 255) + ", 0.5)"),
+                borderColor: name.map(d =>
+                    "rgba(" + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) +
+                    "," + Math.floor(Math.random() * 255) + ", 0.5)"),
+                borderWidth: 0,
+            });
+        }
         var BarData = {
-            labels: cData.labels,
-            datasets: [
-                {
-                    label: cData.label,
-                    data: cData.data,
-                    backgroundColor: chartColors[1],
-                    borderColor: chartColors[1],
-                    borderWidth: 0
-                },
-            ]
+            labels: name,
+            datasets: dataSets
         };
         var barChartCanvas = $("#chartjs-staked-bar-chart").get(0).getContext("2d");
         var barChart = new Chart(barChartCanvas, {

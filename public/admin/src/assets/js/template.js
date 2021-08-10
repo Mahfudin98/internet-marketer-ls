@@ -90,4 +90,4 @@ $(".btn.btn-like").on("click", function () {
 //   }
 // }
 
-purchaseBanner();
+// purchaseBanner();

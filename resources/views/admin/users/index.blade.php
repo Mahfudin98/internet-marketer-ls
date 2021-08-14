@@ -26,8 +26,12 @@
                             <input type="email" id="email" name="email" class="form-control" placeholder="Masukan Email" required>
                         </div>
                         <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" id="password" name="password" class="form-control" placeholder="Masukan Password" required>
+                            <div class="input-group" id="show_hide_password">
+                                        <input type="password" class="form-control" name="password" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required>
+                                        <div class="input-group-prepend">
+                                        <a class="input-group-text" id="basic-addon1" href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                                        </div>
+                                    </div>
                         </div>
                         <div class="form-group">
                             <label for="roles">Roles</label>
@@ -143,3 +147,24 @@
   </div>
 @endforeach
 @stop
+
+@section('js')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+<script>
+    $(document).ready(function() {
+    $("#show_hide_password a").on('click', function(event) {
+        event.preventDefault();
+        if($('#show_hide_password input').attr("type") == "text"){
+            $('#show_hide_password input').attr('type', 'password');
+            $('#show_hide_password i').addClass( "fa-eye-slash" );
+            $('#show_hide_password i').removeClass( "fa-eye" );
+        }else if($('#show_hide_password input').attr("type") == "password"){
+            $('#show_hide_password input').attr('type', 'text');
+            $('#show_hide_password i').removeClass( "fa-eye-slash" );
+            $('#show_hide_password i').addClass( "fa-eye" );
+        }
+    });
+});
+</script>
+@endsection

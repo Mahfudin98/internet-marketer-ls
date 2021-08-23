@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Anggota;
 use App\Models\MemberProduct;
 use App\Models\Product;
+use App\Models\Sosmed;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -17,6 +18,11 @@ class DashboardController extends Controller
             $member = $member->where('name', 'LIKE', '%' . request()->q . '%');
         }
         $member = $member->paginate(10);
+        $points = Anggota::with(['sosmeds']);
+        if (request()->q != '') {
+            $points = $points->where('name', 'LIKE', '%' . request()->q . '%');
+        }
+        $points = $points->paginate(10);
         $data = [];
         foreach ($member as $row) {
             $data['labels'][] = $row->name;
@@ -29,11 +35,25 @@ class DashboardController extends Controller
             }
             $data['sum'][] = $row->member->sum('stok');
         }
+
+        foreach ($points as $row) {
+            $data['anggota'][] = $row->name;
+            $data['point'][] = $row->sosmeds[0]->point;
+        }
+
         $data['chart_data'] = json_encode($data);
-        // dd($bar,$data);
-        return view('admin.dashboard', $data, compact('member'));
+
+        // dd($data);
+        return view('admin.dashboard', $data, compact('member', 'points'));
     }
 
+    public function updatePoint(Request $request, $id)
+    {
+        $data = $request->all();
+        $points = Sosmed::find($id);
+        $points->update($data);
+        return redirect(route('dashboard'))->with(['success' => 'Point Ditambahkan']);
+    }
     // public function stok($id)
     // {
     //     $member = MemberProduct::with('product')->where('anggota_id', $id)->get();

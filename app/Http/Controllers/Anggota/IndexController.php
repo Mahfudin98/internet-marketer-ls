@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\MemberProduct;
 use App\Models\Product;
 use App\Models\Province;
+use App\Models\Sosmed;
 use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -31,14 +32,23 @@ class IndexController extends Controller
         if (request()->q != '') {
             $memberprod = $memberprod->where('name_products', 'LIKE', '%' . request()->q . '%');
         }
+        $points = Sosmed::with(['anggota'])->orderBy('point', 'DESC')->paginate(10);
+        $mamberpoint = Sosmed::where('anggota_id', $member->id)->first();
         $memberprod = $memberprod->get();
         $data = [];
         foreach ($memberprod as $row) {
             $data['label'][] = $row->product->name;
             $data['stok'][] = $row->stok;
         }
+
+        foreach ($points as $row) {
+            $data['anggota'][] = $row->anggota->name;
+            $data['point'][] = $row->point;
+        }
+
         $data['chart_data'] = json_encode($data);
-        return view('anggota.dashboard', $data, compact('memberprod'));
+        // dd($points);
+        return view('anggota.dashboard', $data, compact('memberprod', 'mamberpoint'));
     }
 
     public function product()

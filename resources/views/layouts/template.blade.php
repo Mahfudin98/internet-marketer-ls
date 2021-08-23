@@ -52,7 +52,7 @@
     <!-- Vendor Js For This Page Ends-->
     <!-- build:js -->
     <script src="{{ asset('admin/src/assets/js/template.js') }}"></script>
-    <script src="{{ asset('admin/src/assets/js/dashboard.js') }}"></script>
+    {{-- <script src="{{ asset('admin/src/assets/js/dashboard.js') }}"></script> --}}
     <!-- endbuild -->
     @yield('js')
   </body>

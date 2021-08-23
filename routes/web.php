@@ -72,6 +72,9 @@ Route::group(['middleware' => ['auth']], function (){
         Route::resource('/product', ProductController::class);
         Route::get('/sosmed/{id}', [AnggotaController::class, 'sosmed'])->name('anggota.sosmed');
         Route::post('/sosmed-post', [AnggotaController::class, 'postSosmed'])->name('anggota.post.sosmed');
+
+        // update point
+        Route::patch('/point-update/{id}', [DashboardController::class, 'updatePoint'])->name('point-update');
         // Route::get('/product', [ProductController::class, 'index'])->name('product.index');
         // Route::post('/product', [ProductController::class, 'store'])->name('product.store');
         // Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('product.delete');

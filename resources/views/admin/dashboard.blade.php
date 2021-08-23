@@ -87,11 +87,11 @@
                                         </tr>
                                     @endforelse
                                 </tbody>
-                                <div class="card-footer">
-                                    {{ $points->links('pagination::bootstrap-4') }}
-                                </div>
                             </table>
                         </div>
+                    </div>
+                    <div class="card-footer">
+                        {{ $points->links('pagination::bootstrap-4') }}
                     </div>
                 </div>
             </div>

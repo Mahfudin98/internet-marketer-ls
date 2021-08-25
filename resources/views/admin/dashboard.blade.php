@@ -91,7 +91,9 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        {{ $points->links('pagination::bootstrap-4') }}
+                        <div class="table-responsive">
+                            {{ $points->links('pagination::bootstrap-4') }}
+                        </div>
                     </div>
                 </div>
             </div>

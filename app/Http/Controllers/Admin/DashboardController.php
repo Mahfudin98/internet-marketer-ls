@@ -18,7 +18,7 @@ class DashboardController extends Controller
             $member = $member->where('name', 'LIKE', '%' . request()->q . '%');
         }
         $member = $member->paginate(10);
-        $points = Anggota::with(['sosmeds']);
+        $points = Anggota::with(['sosmeds'])->orderBy('updated_at', 'ASC');
         if (request()->q != '') {
             $points = $points->where('name', 'LIKE', '%' . request()->q . '%');
         }

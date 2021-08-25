@@ -111,12 +111,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php
+                                    {{-- @php
                                         $i = 1;
-                                    @endphp
+                                    @endphp --}}
                                     @forelse ($rank as $rows)
-                                        <tr style="background-color: {{ $i == 1 ? '#FFD700' : ''}}">
-                                            <td class="text-center">{{ $i++ }}</td>
+                                        <tr>
+                                            <td class="text-center">#</td>
                                             <td>{{ $rows->anggota->name }}</td>
                                             <td class="text-center">{{ $rows->point }}</td>
                                         </tr>

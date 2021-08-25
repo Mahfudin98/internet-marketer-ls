@@ -111,14 +111,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @php
+                                    @php
                                         $i = 1;
-                                    @endphp --}}
-                                    @forelse ($rank as $rows)
+                                    @endphp
+                                    @forelse ($rank as $row)
                                         <tr>
-                                            <td class="text-center">#</td>
-                                            <td>{{ $rows->anggota->name }}</td>
-                                            <td class="text-center">{{ $rows->point }}</td>
+                                            <td class="text-center">{{ $i++ }}</td>
+                                            <td>{{ $row->anggota->name }}</td>
+                                            <td class="text-center">{{ $row->point }}</td>
                                         </tr>
                                     @empty
                                         <tr>

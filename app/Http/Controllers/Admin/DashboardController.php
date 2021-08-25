@@ -18,11 +18,12 @@ class DashboardController extends Controller
             $member = $member->where('name', 'LIKE', '%' . request()->q . '%');
         }
         $member = $member->paginate(10);
-        $points = Anggota::with(['sosmeds']);
+        $points = Anggota::with(['sosmeds'])->orderBy('updated_at', 'ASC');
         if (request()->q != '') {
             $points = $points->where('name', 'LIKE', '%' . request()->q . '%');
         }
         $points = $points->paginate(10);
+        $rank = Sosmed::with(['anggota'])->orderBy('point', 'DESC')->get();
         $data = [];
         foreach ($member as $row) {
             $data['labels'][] = $row->name;
@@ -44,7 +45,7 @@ class DashboardController extends Controller
         $data['chart_data'] = json_encode($data);
 
         // dd($data);
-        return view('admin.dashboard', $data, compact('member', 'points'));
+        return view('admin.dashboard', $data, compact('member', 'points', 'rank'));
     }
 
     public function updatePoint(Request $request, $id)

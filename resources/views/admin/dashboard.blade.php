@@ -40,14 +40,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
                         <h2 class="card-title">Point Chart</h2>
                     </div>
                     <div class="card-body">
                         <div class="item-wrapper">
-                            <canvas id="chartjs-bar-chart" width="600" height="400"></canvas>
+                            <canvas id="chartjs-bar-chart" width="600" height="250"></canvas>
                         </div>
                     </div>
                 </div>
@@ -55,10 +55,10 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
-                        <h5>Point Memeber</h5>
+                        <h5>Point Member</h5>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive">
+                        <div class="table-responsive" style="height: 400px;overflow: scroll;">
                             <table class="table table-hover">
                                 <thead class="thead-dark">
                                     <tr>
@@ -80,6 +80,45 @@
                                                     <i class="fas fa-edit"></i>
                                                 </button>
                                             </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="2">Data Tidak Ditemukan</td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        {{ $points->links('pagination::bootstrap-4') }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Rank Point Member</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive" style="height: 400px;overflow: scroll;">
+                            <table class="table table-hover">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th class="text-center">Rank</th>
+                                        <th>Nama</th>
+                                        <th class="text-center">Point</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @php
+                                        $i = 1;
+                                    @endphp
+                                    @forelse ($rank as $rows)
+                                        <tr style="background-color: {{ $i == 1 ? '#FFD700' : ''}}">
+                                            <td class="text-center">{{ $i++ }}</td>
+                                            <td>{{ $rows->anggota->name }}</td>
+                                            <td class="text-center">{{ $rows->point }}</td>
                                         </tr>
                                     @empty
                                         <tr>
@@ -148,7 +187,7 @@
 @section('css')
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
 @endsection
 

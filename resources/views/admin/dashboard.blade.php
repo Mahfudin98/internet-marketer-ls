@@ -129,9 +129,6 @@
                             </table>
                         </div>
                     </div>
-                    <div class="card-footer">
-                        {{ $points->links('pagination::bootstrap-4') }}
-                    </div>
                 </div>
             </div>
             <div class="col-12">

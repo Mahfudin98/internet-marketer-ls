@@ -40,18 +40,19 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-{{ Auth::user()->roles == 'admin' ? '12' : '6' }}">
                 <div class="card">
                     <div class="card-header">
                         <h2 class="card-title">Point Chart</h2>
                     </div>
                     <div class="card-body">
                         <div class="item-wrapper">
-                            <canvas id="chartjs-bar-chart" width="600" height="250"></canvas>
+                            <canvas id="chartjs-bar-chart" width="600" height="{{ Auth::user()->roles == 'admin' ? '250' : '505' }}"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
+            @if (Auth::user()->roles == 'admin')
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
@@ -97,6 +98,8 @@
                     </div>
                 </div>
             </div>
+            @endif
+
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">

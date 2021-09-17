@@ -24,6 +24,7 @@ class DashboardController extends Controller
         }
         $points = $points->paginate(10);
         $rank = Sosmed::with(['anggota'])->orderBy('point', 'DESC')->get();
+        $rankChart = Sosmed::with(['anggota'])->orderBy('point', 'DESC')->paginate(10);
         $data = [];
         foreach ($member as $row) {
             $data['labels'][] = $row->name;
@@ -37,9 +38,9 @@ class DashboardController extends Controller
             $data['sum'][] = $row->member->sum('stok');
         }
 
-        foreach ($points as $row) {
-            $data['anggota'][] = $row->name;
-            $data['point'][] = $row->sosmeds[0]->point;
+        foreach ($rankChart as $row) {
+            $data['anggota'][] = $row->anggota->name;
+            $data['point'][] = $row->point;
         }
 
         $data['chart_data'] = json_encode($data);

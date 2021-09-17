@@ -247,7 +247,7 @@
                 }
             });
         }
-
+        // chart point
         if ($("#chartjs-bar-chart").length) {
             const cData = JSON.parse('<?php echo $chart_data; ?>');
             var BarData = {

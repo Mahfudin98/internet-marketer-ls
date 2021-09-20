@@ -104,6 +104,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h5>Rank Point Member</h5>
+                        <a href="{{ route('export.pdf') }}" class="btn btn-success my-3" target="_blank">EXPORT PDF</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive" style="height: 400px;overflow: scroll;">

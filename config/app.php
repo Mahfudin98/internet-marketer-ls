@@ -177,6 +177,8 @@ return [
 
         // excel
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        // pdf
+        Barryvdh\DomPDF\ServiceProvider::class,
 
     ],
 
@@ -232,7 +234,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         // excel
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-
+        // pdf
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];

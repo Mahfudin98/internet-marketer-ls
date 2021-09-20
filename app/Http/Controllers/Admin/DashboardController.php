@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\PointExcel;
 use App\Http\Controllers\Controller;
 use App\Models\Anggota;
 use App\Models\MemberProduct;
 use App\Models\Product;
 use App\Models\Sosmed;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class DashboardController extends Controller
 {
@@ -47,6 +51,19 @@ class DashboardController extends Controller
 
         // dd($data);
         return view('admin.dashboard', $data, compact('member', 'points', 'rank'));
+    }
+
+    public function exportExcel()
+    {
+        return Excel::download(new PointExcel, 'point.xlsx');
+    }
+
+    public function exportPdf()
+    {
+        $bulan = Carbon::now();
+        $rank = Sosmed::with(['anggota'])->orderBy('point', 'DESC')->get();
+        $pdf = PDF::loadView('admin.rank-pdf', compact('rank', 'bulan'));
+        return $pdf->stream();
     }
 
     public function updatePoint(Request $request, $id)

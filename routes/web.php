@@ -75,6 +75,8 @@ Route::group(['middleware' => ['auth']], function (){
 
         // update point
         Route::patch('/point-update/{id}', [DashboardController::class, 'updatePoint'])->name('point-update');
+        Route::get('/point/excel', [DashboardController::class, 'exportExcel'])->name('export.excel');
+        Route::get('/point/pdf', [DashboardController::class, 'exportPdf'])->name('export.pdf');
         // Route::get('/product', [ProductController::class, 'index'])->name('product.index');
         // Route::post('/product', [ProductController::class, 'store'])->name('product.store');
         // Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('product.delete');

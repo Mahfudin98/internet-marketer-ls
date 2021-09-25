@@ -58,6 +58,7 @@
                                 <th>Nama</th>
                                 <th>Email</th>
                                 <th>Roles</th>
+                                <th>jumlah Agen/Reseller</th>
                                 <th>Aksi</th>
                             </thead>
                             <tbody>
@@ -74,6 +75,7 @@
                                         <span class="badge badge-warning">CS</span>
                                         @endif
                                     </td>
+                                    <td>{{ $row->anggota->count() }}</td>
                                     <td>
                                         <form action="{{ route('video.delete', $row->id) }}" method="POST">
                                             @csrf

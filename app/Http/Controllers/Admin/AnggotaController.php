@@ -8,7 +8,9 @@ use App\Models\City;
 use App\Models\District;
 use App\Models\Province;
 use App\Models\Sosmed;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
@@ -16,20 +18,27 @@ class AnggotaController extends Controller
 {
     public function index()
     {
-        $anggota = Anggota::with(['district'])->orderBy('created_at', 'desc');
+        $anggota = Anggota::with(['district', 'user'])->orderBy('created_at', 'desc');
         if (request()->q != '') {
             $anggota = $anggota->where('name', 'LIKE', '%' . request()->q . '%');
         }
         $anggota = $anggota->paginate(10);
         $sosmed = Sosmed::with(['anggota'])->first();
-
-        return view('admin.anggota.index', compact('anggota', 'sosmed'));
+        // cs
+        $csanggota = Anggota::with(['district', 'user'])->where('user_id', Auth()->user()->id)->orderBy('created_at', 'desc');
+        if (request()->q != '') {
+            $csanggota = $csanggota->where('name', 'LIKE', '%' . request()->q . '%');
+        }
+        $csanggota = $csanggota->paginate(10);
+        // dd($anggota);
+        return view('admin.anggota.index', compact('anggota', 'sosmed', 'csanggota'));
     }
 
     public function create()
     {
         $provinces = Province::orderBy('created_at', 'DESC')->get();
-        return view('admin.anggota.create', compact('provinces'));
+        $user = User::orderBy('name', 'ASC')->get();
+        return view('admin.anggota.create', compact('provinces', 'user'));
     }
 
     public function getCity()
@@ -57,6 +66,8 @@ class AnggotaController extends Controller
             'image'       => 'nullable|image|mimes:png,jpeg,jpg',
             'username'    => 'required|unique:anggotas|max:255',
             'password'    => 'required',
+            'cs_id'       => 'required',
+            'birthday'    => 'required'
         ]);
 
         if ($request->hasFile('image')) {
@@ -75,7 +86,10 @@ class AnggotaController extends Controller
                 'link'  => $request->link,
                 'image' => $filename,
                 'type' => $request->type,
-                'status' => $request->status
+                'status' => $request->status,
+                // field add new
+                'user_id' => $request->cs_id,
+                'birthday_date' => $request->birthday
             ]);
 
             $sosmed = Sosmed::create([
@@ -96,7 +110,10 @@ class AnggotaController extends Controller
                 'phone' => preg_replace("/^0/", "62", $request->phone),
                 'link'  => $request->link,
                 'type' => $request->type,
-                'status' => $request->status
+                'status' => $request->status,
+                // new fielad
+                'user_id' => $request->cs_id,
+                'birthday_date' => $request->birthday
             ]);
             $sosmed = Sosmed::create([
                 'anggota_id' => $anggota->id,
@@ -114,7 +131,8 @@ class AnggotaController extends Controller
     {
         $anggota = Anggota::with(['district'])->find($id);
         $provinces = Province::orderBy('created_at', 'DESC')->get();
-        return view('admin.anggota.edit', compact('anggota', 'provinces'));
+        $user = User::orderBy('name', 'ASC')->get();
+        return view('admin.anggota.edit', compact('anggota', 'provinces', 'user'));
     }
 
     public function update(Request $request, $id)
@@ -128,7 +146,10 @@ class AnggotaController extends Controller
             'status'      => 'required',
             'link'        => 'nullable',
             'username'    => 'nullable|unique:anggotas|max:255',
-            'image'       => 'nullable|image|mimes:png,jpeg,jpg'
+            'image'       => 'nullable|image|mimes:png,jpeg,jpg',
+            // new
+            'cs_id'       => 'required',
+            'birthday'    => 'required'
         ]);
 
         $anggota = Anggota::find($id);
@@ -157,6 +178,11 @@ class AnggotaController extends Controller
         }
         if ($request->password != '') {
             $data['password'] = $request->password;
+        }
+        if ($request->cs_id != '') {
+            // field add new
+            $data['user_id'] = $request->cs_id;
+            $data['birthday_date'] = $request->birthday;
         }
         $anggota->update($data);
 

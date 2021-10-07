@@ -132,7 +132,7 @@
                                     </div>
                                     @if (Auth::user()->roles == 'cs')
                                         <div class="form-group">
-                                            <input type="text" name="cs_id" value="{{ $anggota_id }}">
+                                            <input type="hidden" name="cs_id" value="{{ $anggota_id }}">
                                         </div>
                                     @elseif (Auth::user()->roles == 'admin')
                                         <div class="form-group">

@@ -152,7 +152,8 @@ class AnggotaController extends Controller
             'image'       => 'nullable|image|mimes:png,jpeg,jpg',
             // new
             'cs_id'       => 'required',
-            'birthday'    => 'required'
+            'birthday'    => 'required',
+            'join_on'     => 'required'
         ]);
 
         $anggota = Anggota::find($id);
@@ -186,6 +187,7 @@ class AnggotaController extends Controller
             // field add new
             $data['user_id'] = $request->cs_id;
             $data['birthday_date'] = $request->birthday;
+            $data['join_on'] = $request->join_on;
         }
         $anggota->update($data);
 

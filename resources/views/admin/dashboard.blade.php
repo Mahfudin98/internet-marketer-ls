@@ -20,7 +20,7 @@
                         <div class="icon">
                             <i class="fas fa-solid fas fa-user-plus"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="#" class="small-box-footer" data-toggle="modal" data-target=".new-agen">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 
@@ -34,7 +34,7 @@
                         <div class="icon">
                             <i class="fas fa-solid fas fa-user-plus"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="#" class="small-box-footer" data-toggle="modal" data-target=".new-reseller">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 
@@ -42,13 +42,13 @@
 
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>{!! $amount->where('type', 'Agen') ? $amount->where('type', 'Agen')->count() : "0" !!}</h3>
+                            <h3>{!! $amount->where('type', 'Agen')->where('status', 1) ? $amount->where('type', 'Agen')->where('status', 1)->count() : "0" !!}</h3>
                             <p>Amount Agen</p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-users"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="#" class="small-box-footer"  data-toggle="modal" data-target=".amount-agen">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 
@@ -56,19 +56,24 @@
 
                     <div class="small-box bg-danger">
                         <div class="inner">
-                            <h3>{!! $amount->where('type', 'Reseller') ? $amount->where('type', 'Reseller')->count() : "0" !!}</h3>
+                            <h3>{!! $amount->where('type', 'Reseller')->where('status', 1) ? $amount->where('type', 'Reseller')->where('status', 1)->count() : "0" !!}</h3>
                             <p>Amount Reseller</p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-users"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="#" class="small-box-footer" data-toggle="modal" data-target=".amount-reseller">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 
             </div>
         </div>
     </main>
+
+    @include('admin.list.agen')
+    @include('admin.list.reseller')
+    @include('admin.list.new-agen')
+    @include('admin.list.new-reseller')
 @stop
 
 @section('css')

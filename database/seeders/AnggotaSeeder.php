@@ -14,7 +14,7 @@ class AnggotaSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('anggotas')->insert(
+        $anggotas = [
             [
                 'name' => 'Hanifa', //Giari
                 'slug' => 'hanifa',
@@ -51,6 +51,7 @@ class AnggotaSeeder extends Seeder
                 'link' => 'https://mauorder.online/ls-agen',
                 'type' => 'Agen'
             ]
-        );
+        ];
+        DB::table('anggotas')->insert($anggotas);
     }
 }

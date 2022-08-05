@@ -67,7 +67,8 @@ class AnggotaController extends Controller
             'username'    => 'required|unique:anggotas|max:255',
             'password'    => 'required',
             'cs_id'       => 'required',
-            'birthday'    => 'required'
+            'birthday'    => 'required',
+            'join_on'     => 'required'
         ]);
 
         if ($request->hasFile('image')) {
@@ -89,7 +90,8 @@ class AnggotaController extends Controller
                 'status' => $request->status,
                 // field add new
                 'user_id' => $request->cs_id,
-                'birthday_date' => $request->birthday
+                'birthday_date' => $request->birthday,
+                'join_on' => $request->join_on
             ]);
 
             $sosmed = Sosmed::create([
@@ -113,7 +115,8 @@ class AnggotaController extends Controller
                 'status' => $request->status,
                 // new fielad
                 'user_id' => $request->cs_id,
-                'birthday_date' => $request->birthday
+                'birthday_date' => $request->birthday,
+                'join_on' => $request->join_on
             ]);
             $sosmed = Sosmed::create([
                 'anggota_id' => $anggota->id,
@@ -153,7 +156,7 @@ class AnggotaController extends Controller
         ]);
 
         $anggota = Anggota::find($id);
-        $data = $request->only('name', 'district_id', 'username', 'password', 'slug', 'alamat', 'phone', 'link', 'image', 'type', 'status');
+        $data = $request->only('name', 'district_id', 'slug', 'alamat', 'phone', 'link', 'image', 'type', 'status');
         $filename = $anggota->image;
         if ($request->hasFile('image')) {
             $file = $request->file('image');

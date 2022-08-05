@@ -31,8 +31,8 @@
                         <div class="grid-body">
                             <p class="card-title">Point kamu saat ini</p>
                             <br><br><br>
-                            <div class="circle green">{{ $mamberpoint->point }}</div>
-                            <p class="text-center">Point Kamu <span class="badge badge-success">{{ $mamberpoint->point }}</span></p>
+                            <div class="circle green">{!! !empty($mamberpoint->point) ? $mamberpoint->point : "0" !!}</div>
+                            <p class="text-center">Point Kamu <span class="badge badge-success">{!! !empty($mamberpoint->point) ? $mamberpoint->point : "0" !!}</span></p>
                         </div>
                     </div>
                 </div>

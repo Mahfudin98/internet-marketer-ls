@@ -27,6 +27,12 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('point') }}" class="nav-link {{ (request()->is('admin/point')) ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-star"></i>
+                        <p>Point</p>
+                    </a>
+                </li>
                 @if (Auth::user()->roles == 'cs')
                 <li class="nav-item">
                     <a href="{{ route('anggota.index') }}" class="nav-link {{ (request()->is('admin/anggota*')) ? 'active' : '' }}">

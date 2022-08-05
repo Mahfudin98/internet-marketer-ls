@@ -53,6 +53,7 @@ Route::group(['middleware' => 'member'], function() {
 Route::group(['middleware' => ['auth']], function (){
     Route::prefix('admin')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/point', [DashboardController::class, 'point'])->name('point');
         Route::resource('/anggota', AnggotaController::class);
         // category controller
         Route::get('/kategori', [CategoryController::class, 'index'])->name('category.index');

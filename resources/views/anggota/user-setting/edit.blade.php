@@ -130,10 +130,7 @@
                             <div class="d-flex justify-content-between pt-2">
                                 <p class="text-black">Join On</p>
                                 <p class="text-gray">
-                                    {{ date_format(
-    auth()->guard('member')->user()->created_at,
-    'd F, Y',
-) }}
+                                    {!! !empty(auth()->guard('member')->user()->join_on) ? date('d, M, Y', strtotime(auth()->guard('member')->user()->join_on)) : "Belum Diatur" !!}
                                 </p>
                             </div>
                         </div>

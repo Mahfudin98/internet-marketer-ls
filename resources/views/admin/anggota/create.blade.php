@@ -26,6 +26,10 @@
                                         <input type="date" class="form-control" name="birthday" id="birthday" required>
                                     </div>
                                     <div class="form-group">
+                                        <label for="join_on">Tanggal Join</label>
+                                        <input type="date" class="form-control" name="join_on" id="join_on" required>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="username">Username</label>
                                         <input type="text" class="form-control" name="username" id="username"
                                             placeholder="Username Anggota" required>

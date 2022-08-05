@@ -17,6 +17,18 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        $amount = Anggota::all();
+        $now = Carbon::now()->format('m');
+
+        $newMember = Anggota::whereRaw('MONTH(join_on) = '.$now)->get();
+
+        // dd($data);
+        return view('admin.dashboard', compact('amount', 'newMember'));
+        // dd($newMember);
+    }
+
+    public function point()
+    {
         $member = Anggota::with(['member'])->orderBy('created_at', 'DESC');
         if (request()->q != '') {
             $member = $member->where('name', 'LIKE', '%' . request()->q . '%');
@@ -49,8 +61,14 @@ class DashboardController extends Controller
 
         $data['chart_data'] = json_encode($data);
 
+        $amount = Anggota::all();
+        $now = Carbon::now()->format('m');
+
+        $newMember = Anggota::whereRaw('MONTH(join_on) = '.$now)->get();
+
         // dd($data);
-        return view('admin.dashboard', $data, compact('member', 'points', 'rank'));
+        return view('admin.point', $data, compact('member', 'points', 'rank'));
+        // dd($newMember);
     }
 
     public function exportExcel()

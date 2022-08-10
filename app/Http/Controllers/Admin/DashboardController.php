@@ -12,6 +12,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -20,11 +21,90 @@ class DashboardController extends Controller
         $amount = Anggota::all();
         $now = Carbon::now()->format('m');
 
-        $newMember = Anggota::whereRaw('MONTH(join_on) = '.$now)->get();
+        $newMember = Anggota::whereRaw('MONTH(join_on) = ' . $now)->get();
+        // chart
+        $year = "2022";
+        $mounth = "08";
+        $filter = $year . '-' . $mounth;
+        $parse = Carbon::parse($filter);
+        $array_date = range(
+            $parse->startOfMonth()->format('d'),
+            $parse->endOfMonth()->format('d')
+        );
 
+        $reseller = Anggota::where('join_on', 'LIKE', '%' . $filter . '%')
+        ->where('type', 'Reseller')
+        ->groupBy('date')
+        ->orderBy('join_on')
+        ->selectRaw('DATE(join_on) as date')
+        ->selectRaw('count(*) as count')
+        ->get();
+
+        $agen = Anggota::where('join_on', 'LIKE', '%' . $filter . '%')
+        ->where('type', 'Agen')
+        ->groupBy('date')
+        ->orderBy('join_on')
+        ->selectRaw('DATE(join_on) as date')
+        ->selectRaw('count(*) as count')
+        ->get();
+
+        $data = [];
+        foreach ($array_date as $row) {
+            $f_date = strlen($row) == 1 ? 0 . $row : $row;
+            $date = $filter . '-' . $f_date;
+            // reseller
+            $resellers = $reseller->firstWhere('date', $date);
+            $data['reseller'][] = [
+                'labels' => $date,
+                'total' => $resellers ? $resellers->count : 0,
+            ];
+            // agen
+            $agens = $agen->firstWhere('date', $date);
+            $data['agen'][] = [
+                'labels' => $date,
+                'total' => $agens ? $agens->count : 0,
+            ];
+        }
+        $data['chart_data'] = json_encode($data);
         // dd($data);
-        return view('admin.dashboard', compact('amount', 'newMember'));
-        // dd($newMember);
+        return view('admin.dashboard', $data, compact('amount', 'newMember'));
+    }
+
+    public function barReseller()
+    {
+        // chart
+        $year = request()->year;
+        $mounth = request()->month;
+        $filter = $year . '-' . $mounth;
+        $parse = Carbon::parse($filter);
+        $array_date = range(
+            $parse->startOfMonth()->format('d'),
+            $parse->endOfMonth()->format('d')
+        );
+
+        $reseller = Anggota::where('join_on', 'LIKE', '%' . $filter . '%')
+        ->where('type', 'Reseller')
+        ->groupBy('date')
+        ->orderBy('join_on')
+        ->selectRaw('DATE(join_on) as date')
+        ->selectRaw('count(*) as count')
+        ->get();
+        // $dates = $dates->merge($reseller);
+
+        $data = [];
+        foreach ($array_date as $row) {
+            $f_date = strlen($row) == 1 ? 0 . $row : $row;
+            $date = $filter . '-' . $f_date;
+            $total = $reseller->firstWhere('date', $date);
+            $data[] = [
+                'labels' => $date,
+                'total' => $total ? $total->count : 0,
+            ];
+        }
+
+        // $data['chart_data'] = json_encode($data);
+        // dd($data);
+        return $data;
     }
 
     public function point()
@@ -64,7 +144,7 @@ class DashboardController extends Controller
         $amount = Anggota::all();
         $now = Carbon::now()->format('m');
 
-        $newMember = Anggota::whereRaw('MONTH(join_on) = '.$now)->get();
+        $newMember = Anggota::whereRaw('MONTH(join_on) = ' . $now)->get();
 
         // dd($data);
         return view('admin.point', $data, compact('member', 'points', 'rank'));
@@ -89,7 +169,7 @@ class DashboardController extends Controller
         $data = $request->all();
         $points = Sosmed::find($id);
         $points->update($data);
-        return redirect(route('dashboard'))->with(['success' => 'Point Ditambahkan']);
+        return back()->with(['success' => 'Point Ditambahkan']);
     }
     // public function stok($id)
     // {

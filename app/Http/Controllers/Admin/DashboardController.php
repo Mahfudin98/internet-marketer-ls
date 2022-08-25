@@ -22,9 +22,15 @@ class DashboardController extends Controller
         $now = Carbon::now()->format('m');
 
         $newMember = Anggota::whereRaw('MONTH(join_on) = ' . $now)->get();
+
+        return view('admin.dashboard', compact('amount', 'newMember'));
+    }
+
+    public function barReseller()
+    {
         // chart
-        $year = "2022";
-        $mounth = "08";
+        $year = request()->year;
+        $mounth = request()->month;
         $filter = $year . '-' . $mounth;
         $parse = Carbon::parse($filter);
         $array_date = range(
@@ -39,7 +45,7 @@ class DashboardController extends Controller
         ->selectRaw('DATE(join_on) as date')
         ->selectRaw('count(*) as count')
         ->get();
-
+        // $dates = $dates->merge($reseller);
         $agen = Anggota::where('join_on', 'LIKE', '%' . $filter . '%')
         ->where('type', 'Agen')
         ->groupBy('date')
@@ -63,42 +69,6 @@ class DashboardController extends Controller
             $data['agen'][] = [
                 'labels' => $date,
                 'total' => $agens ? $agens->count : 0,
-            ];
-        }
-        $data['chart_data'] = json_encode($data);
-        // dd($data);
-        return view('admin.dashboard', $data, compact('amount', 'newMember'));
-    }
-
-    public function barReseller()
-    {
-        // chart
-        $year = request()->year;
-        $mounth = request()->month;
-        $filter = $year . '-' . $mounth;
-        $parse = Carbon::parse($filter);
-        $array_date = range(
-            $parse->startOfMonth()->format('d'),
-            $parse->endOfMonth()->format('d')
-        );
-
-        $reseller = Anggota::where('join_on', 'LIKE', '%' . $filter . '%')
-        ->where('type', 'Reseller')
-        ->groupBy('date')
-        ->orderBy('join_on')
-        ->selectRaw('DATE(join_on) as date')
-        ->selectRaw('count(*) as count')
-        ->get();
-        // $dates = $dates->merge($reseller);
-
-        $data = [];
-        foreach ($array_date as $row) {
-            $f_date = strlen($row) == 1 ? 0 . $row : $row;
-            $date = $filter . '-' . $f_date;
-            $total = $reseller->firstWhere('date', $date);
-            $data[] = [
-                'labels' => $date,
-                'total' => $total ? $total->count : 0,
             ];
         }
 

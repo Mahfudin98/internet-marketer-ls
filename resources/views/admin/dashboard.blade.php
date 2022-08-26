@@ -114,7 +114,10 @@
                 <div class="col-lg-4">
                     <div class="card">
                         <div class="card-header">
-                            <h3>Donut Chart</h3>
+                            <h4>Donut Chart</h4>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="donat-bar" height="400"></canvas>
                         </div>
                     </div>
                 </div>
@@ -205,12 +208,14 @@
                                 label: "Reseller",
                                 backgroundColor: 'rgb(255, 99, 132)',
                                 borderColor: 'rgb(255, 99, 132)',
+                                stack: 'combined',
                                 data: dCount
                             },
                             {
                                 label: "Agen",
                                 backgroundColor: 'rgb(48, 128, 208)',
                                 borderColor: 'rgb(48, 128, 208)',
+                                stack: 'combined',
                                 data: dCountAgen
                             },
                         ]
@@ -228,6 +233,11 @@
                                     display: true,
                                     text: 'Chart.js Bar Chart'
                                 }
+                            },
+                            scales: {
+                                y: {
+                                    stacked: true
+                                }
                             }
                         }
                     };
@@ -239,5 +249,36 @@
             });
         }
         getDate();
+
+        $(function() {
+            'use strict';
+            if ($("#donat-bar").length) {
+                const cData = JSON.parse('<?php echo $chart_data; ?>');
+                const cMap = [cData.resellerAktif, cData.resellerNoAktif, cData.agenAktif, cData.agenNoAktif ];
+                var DoughnutData = {
+                    datasets: [{
+                        data: cMap,
+                        backgroundColor: chartColors,
+                        borderColor: chartColors,
+                        borderWidth: chartColors
+                    }],
+                    labels: cData.labels
+                };
+                var DoughnutOptions = {
+                    responsive: true,
+                    animation: {
+                        animateScale: true,
+                        animateRotate: true
+                    }
+                };
+                var doughnutChartCanvas = $("#donat-bar").get(0).getContext("2d");
+                var doughnutChart = new Chart(doughnutChartCanvas, {
+                    type: 'doughnut',
+                    data: DoughnutData,
+                    options: DoughnutOptions
+                });
+            }
+
+        });
     </script>
 @endsection

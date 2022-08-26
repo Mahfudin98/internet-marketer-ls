@@ -23,7 +23,21 @@ class DashboardController extends Controller
 
         $newMember = Anggota::whereRaw('MONTH(join_on) = ' . $now)->get();
 
-        return view('admin.dashboard', compact('amount', 'newMember'));
+        $data = [];
+        foreach ($amount as $row) {
+            $data['resellerAktif'] = $row->where('type', 'Reseller')->where('status', '1')->count();
+            $data['resellerNoAktif'] = $row->where('type', 'Reseller')->where('status', '0')->count();
+            $data['agenAktif'] = $row->where('type', 'Agen')->where('status', '1')->count();
+            $data['agenNoAktif'] = $row->where('type', 'Agen')->where('status', '0')->count();
+        }
+
+        $data['labels'] = ['Reseller Aktif', 'Reseller Tidak Aktif', 'Agen Aktif', 'Agen Tidak Aktif'];
+
+        $data['chart_data'] = json_encode($data);
+
+        // dd($data);
+
+        return view('admin.dashboard', $data, compact('amount', 'newMember'));
     }
 
     public function barReseller()
@@ -110,11 +124,6 @@ class DashboardController extends Controller
         }
 
         $data['chart_data'] = json_encode($data);
-
-        $amount = Anggota::all();
-        $now = Carbon::now()->format('m');
-
-        $newMember = Anggota::whereRaw('MONTH(join_on) = ' . $now)->get();
 
         // dd($data);
         return view('admin.point', $data, compact('member', 'points', 'rank'));
